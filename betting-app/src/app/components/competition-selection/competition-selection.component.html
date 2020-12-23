@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>COMPÉTITIONS</h1>
+<mat-dialog-content class="content">
+    <ul>
+        <li class="box" *ngFor="let competition of competitions">
+            <mat-checkbox [checked]="isChecked(competition)" (change)="selectionChange($event.checked, competition)">
+                {{competition.label}}
+            </mat-checkbox>
+        </li>
+    </ul>
+</mat-dialog-content>
+<div>
+    <div class="row">
+        <div class="col-6">
+        </div>
+        <div class="col-6">
+            <div mat-dialog-actions>
+                <button mat-raised-button color="basic" class="validate-btn" (click)="onNoClick()">Valider</button>
+            </div>
+        </div>
+    </div>
+</div>

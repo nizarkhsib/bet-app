@@ -1,0 +1,27 @@
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.fixed {
+    position: fixed;
+    z-index: 1;
+}
+
+.date-header {
+    top: 0px;
+    width: 100%;
+    z-index: 2;
+    background-color: #2795cb;
+    line-height: 32px;
+    text-align: center;
+    // margin-top: 150px;
+    font-size: 4em;
+    z-index: 1;
+    font-style: bold;
+}

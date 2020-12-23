@@ -1,0 +1,21 @@
+h1 {
+    color: black;
+}
+
+mat-card {
+    max-width: 500px;
+    background-color: revert;
+    margin: 0 auto;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    // float: none;
+    // margin-bottom: 10px;
+}
+
+label {
+    font-size: 15px;
+}
+
+::ng-deep .mat-form-field {
+    display: block !important;
+}

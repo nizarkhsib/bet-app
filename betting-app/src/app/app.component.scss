@@ -1,0 +1,29 @@
+.example-button-row {
+    display: table-cell;
+    width: 490px;
+    text-align: right;
+    float: right !important;
+}
+
+.qr-icon {
+    font-size: 40px;
+    cursor: pointer;
+}
+
+::ng-depp .mat-badge-medium.mat-badge-above .mat-badge-content {
+    top: unset;
+    right: unset;
+}
+
+.dot {
+    height: 20px;
+    width: 20px;
+    background-color: #D40B44;
+    border-radius: 50%;
+    display: inline-block;
+    margin-bottom: -6px;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    margin-left: -16px;
+}

@@ -1,0 +1,12 @@
+<div class="center" style="margin-top: 260px;">
+    <ng-container *ngFor="let parisParDate of listeParis; let i=index;">
+        <div>
+            <div class="date-header fixed" style="margin-top: 225px; font-size: 15px;">
+                {{ currentSectionName | date }}
+            </div>
+            <app-team-box (sectionPosition)="sectionPosition($event)" [parisParDate]="parisParDate"></app-team-box>
+        </div>
+
+
+    </ng-container>
+</div>

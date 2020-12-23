@@ -1,0 +1,44 @@
+<div class="center-header" *ngIf="competitionsArray">
+    <ul class="flex-container wrap fixed" style="text-align: center; z-index:1;">
+
+        <mat-form-field class="flex-competition-select" appearance="fill">
+            <!-- <mat-label class="xxx"><b>TOUS LES SPORTS</b></mat-label> -->
+
+            <!-- <mat-label ><b>SPORT</b></mat-label> -->
+
+            <mat-select (selectionChange)="getCompetitionsList($event.value)" [(ngModel)]="selectedSport">
+
+                <mat-option *ngFor="let sport of sportsArray" [value]="sport.id">
+                    <!-- <i class="fas fa-volleyball-ball"></i> -->
+                    <mat-label> <b>{{sport.name | uppercase}}</b></mat-label>
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field (click)="selectClicked($event)" class="flex-competition-select" appearance="fill">
+
+            <mat-label class="xxx" *ngIf="selectedCompetitions.length == 0 "><b>TOUTES COMPÉTITIONS</b></mat-label>
+            <mat-label class="xxx" *ngIf="selectedCompetitions.length > 0 ">
+                <b>
+                    ( {{selectedCompetitions.length}} )
+                </b> COMPÉTITIONS
+            </mat-label>
+
+            <mat-select>
+
+            </mat-select>
+        </mat-form-field>
+
+    </ul>
+
+    <div class="spinner">
+        <mat-spinner mode="indeterminate" *ngIf="loading && selectedCompetitions.length !== 0" mode="indeterminate"></mat-spinner>
+    </div>
+
+    <div class="bloc-offre-1x2" *ngIf="!loading">
+
+        <app-matches [listeParis]="parisGroupedByDate"></app-matches>
+
+    </div>
+
+</div>

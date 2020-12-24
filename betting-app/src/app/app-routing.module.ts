@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
-import { LoginComponent } from './components/login/login.component';
-import { MatchesComponent } from './components/matches/matches.component';
-import { PanierComponent } from './components/panier/panier.component';
-import { RegisterComponent } from './components/register/register.component';
+import { HomeComponent } from './modules/home/home.component';
+import { LoginComponent } from './modules/login/login.component';
+import { MatchesComponent } from './modules/matches/matches.component';
+import { PanierComponent } from './modules/panier/panier.component';
+import { RegisterComponent } from './modules/register/register.component';
 import { AuthGuard } from './shared/helpers/auth.guard';
 
 

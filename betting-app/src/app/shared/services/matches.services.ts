@@ -9,6 +9,9 @@ export class MatchesService {
 
     // private apiServer = 'https://www.pointdevente.parionssport.fdj.fr/api/competitions/1n2/offre/100';
     // https://www.pointdevente.parionssport.fdj.fr/api/1n2/offre?competition=263&sport=100
+
+    // Get best bets !
+    // https://www.pointdevente.parionssport.fdj.fr/api/meilleurs-paris/20201224/100
     private apiServer = '/api/1n2/offre?';
 
     httpOptions = {
@@ -28,6 +31,10 @@ export class MatchesService {
     getAllMatchesByCompetitionIds(competitionIds: number[], sportId: number): Observable<any[]> {
         const ids = competitionIds.join(',');
         return this.httpClient.get<any[]>(this.apiServer + 'competition=[' + ids + '' + ']&sport=' + sportId);
+    }
+
+    getTopBets(): Observable<any[]> {
+        return this.httpClient.get<any[]>('api/meilleurs-paris/20201224/100');
     }
 
 }

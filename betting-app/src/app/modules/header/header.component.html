@@ -1,0 +1,24 @@
+<nav class="toolbar navbar navbar-light justify-content-between fixed">
+    <a class="navbar-brand">
+        <i class="fa fa-futbol-o" aria-hidden="true"></i>
+        Bête Potes
+    </a>
+    <form class="form-inline">
+        <div class="example-button-container">
+            <!-- <span matTooltip="Mes e-bulletin" class="material-icons qr-icon" [routerLink]="['/panier']" [inline]="true">
+                qr_code_scanner
+            </span>
+            <span class="dot">0</span> -->
+        </div>
+
+        <span>
+            <button *ngIf="!currentUser" mat-raised-button [routerLink]="['/login']" color="basic" aria-label="Example icon button with a menu icon">
+                Login
+            </button>
+            <button *ngIf="currentUser" mat-raised-button (click)="logout()" color="basic" aria-label="Example icon button with a menu icon">
+                Logout
+            </button>
+        </span>
+    </form>
+
+</nav>

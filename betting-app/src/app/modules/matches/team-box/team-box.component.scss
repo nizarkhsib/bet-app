@@ -14,6 +14,12 @@
     grid-template-columns: repeat(auto-fill, 400px);
     justify-content: center;
 
+    @media (max-width: 685px) {
+        margin-top: 205px;
+        margin-bottom: 100px
+            /* CSS that should be displayed if width is equal to or less than 800px goes here */
+    }
+
     .teams-item {
         // background: #1976d2;
         background-color: aliceblue;
@@ -105,7 +111,7 @@
     width: 100%;
     z-index: 2;
     background-color: #2795cb;
-    line-height: 32px;
+    line-height: 35px;
     text-align: center;
     font-size: 4em;
     font-style: bold;

@@ -7,7 +7,6 @@
             <!-- <mat-label ><b>SPORT</b></mat-label> -->
 
             <mat-select (selectionChange)="getCompetitionsList($event.value)" [(ngModel)]="selectedSport">
-
                 <mat-option *ngFor="let sport of sportsArray" [value]="sport.id">
                     <!-- <i class="fas fa-volleyball-ball"></i> -->
                     <mat-label> <b>{{sport.name | uppercase}}</b></mat-label>
@@ -17,7 +16,7 @@
 
         <mat-form-field (click)="selectClicked($event)" class="flex-competition-select" appearance="fill">
 
-            <mat-label class="xxx" *ngIf="selectedCompetitions.length == 0 "><b>TOUTES COMPÉTITIONS</b></mat-label>
+            <mat-label class="xxx" *ngIf="selectedCompetitions.length == 0 ">TOUTES COMPÉTITIONS</mat-label>
             <mat-label class="xxx" *ngIf="selectedCompetitions.length > 0 ">
                 <b>
                     ( {{selectedCompetitions.length}} )

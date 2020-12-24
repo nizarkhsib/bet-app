@@ -20,7 +20,7 @@ export class MatchesComponent implements OnInit {
     @Input() sportId: number;
     @Input() events: Observable<void>;
     positions: any[] = [];
-
+    selectedDate = '';
     public currentSectionName: string = null;
 
     selection1x2: Choice1x2[] = [];
@@ -32,15 +32,21 @@ export class MatchesComponent implements OnInit {
                 private headerService: HeaderService,
                 private selectionService: SelectionService,
                 private matchesService: MatchesService) {
-
+        console.log('listeParis', this.listeParis);
     }
 
     ngOnInit(): void {
 
         if (this.listeParis.length > 0) {
             this.currentSectionName = this.listeParis[0].date;
+            this.selectedDate = this.listeParis[0];
             this.headerService.currentHeaderDate.next(this.currentSectionName);
         }
+    }
+
+    selectionChange(event): void {
+        this.selectedDate = event.value;
+        console.log('change', event.value);
     }
 
     sectionPosition($event): void {
@@ -62,6 +68,10 @@ export class MatchesComponent implements OnInit {
         if (document.body.scrollTop > 0) {
             this.currentSectionName = this.getCurrentSectionName();
         }
+    }
+
+    getListeParis(date: string): any {
+        return this.listeParis.find(element => element.date === date);
     }
 
 

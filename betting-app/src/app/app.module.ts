@@ -22,6 +22,7 @@ import { DateHeaderComponent } from './modules/matches/date-header/date-header.c
 import { TeamBoxComponent } from './modules/matches/team-box/team-box.component';
 import { DemoMaterialModule } from './modules/material-module';
 import { HeaderService } from './shared/services/header.service';
+import { HeaderComponent } from './modules/header/header.component';
 
 @NgModule({
     declarations: [
@@ -35,7 +36,8 @@ import { HeaderService } from './shared/services/header.service';
         RegisterComponent,
         PanierComponent,
         DateHeaderComponent,
-        TeamBoxComponent
+        TeamBoxComponent,
+        HeaderComponent
     ],
     imports: [
         BrowserModule,

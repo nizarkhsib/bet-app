@@ -14,6 +14,7 @@ export class TeamBoxComponent implements OnInit {
     constructor(private element: ElementRef, private headerService: HeaderService) { }
 
     ngOnInit(): void {
+        console.log('parisPardate', this.parisParDate);
         this.headerService.currentHeaderDate.subscribe(
             value => this.currentHeaderDate = value
         );

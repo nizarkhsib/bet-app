@@ -50,6 +50,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
     loading = false;
 
+    bestBets: any[] = [];
+
     // @TODO add fetch by competitions
 
     constructor(public fb: FormBuilder,
@@ -65,11 +67,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
     }
 
     ngOnInit(): void {
+        this.getTopBets();
         this.getSportsList();
     }
-
-
-
 
     ngAfterViewInit(): void {
     }
@@ -126,13 +126,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
         });
 
         dialogRef.afterClosed().subscribe(result => {
-            if (result !== undefined) {
 
-                // this.snackBar.open('User created succesfuly !', 'Close', {
-                //   duration: 2000,
-                // });
-
-            }
+            this.selectedCompetitions = this.selectionService.competitionSubject.getValue();
             dialogRef = null;
             this.selectionService.getCurrentSelectedCompetitions().subscribe(
                 competitions => {
@@ -142,6 +137,15 @@ export class HomeComponent implements OnInit, AfterViewInit {
             );
 
         });
+    }
+
+    getTopBets(): void {
+        this.matchesService.getTopBets().subscribe(
+            result => {
+                console.log('result', result);
+                this.bestBets = result;
+            }
+        );
     }
 
     loadMatches(): void {

@@ -1,12 +1,12 @@
-<div *ngIf="currentHeaderDate !== parisParDate.date" class="date-header" style="font-size: 15px;" #dateHeaderFixed>
-    {{ parisParDate.date | date }}
-</div>
 <ul class="flex-container wrap">
 
     <li class="teams-item" *ngFor="let paris of parisParDate.liste">
         <mat-card>
+            <div class="row text-sm" style="font-size: 22px; margin-left: -6px;">
+                {{paris.competition}}
+            </div>
 
-            <mat-card-header style="background-color: aliceblue;">
+            <mat-card-header style="background-color: aliceblue;margin-left: -6px; margin-right: -4.5px;">
 
                 <mat-card-title style="font-size: 14px;">
                     <div style="margin-right:10px;" class="fa fa-futbol-o"></div>
@@ -15,7 +15,7 @@
             </mat-card-header>
 
             <mat-card-content>
-                {{paris.competition}}
+
                 <ul class="flex-1x2-container nowrap">
                     <li class="choice-1n2-container" (click)="choice1Clicked(paris)">
                         <div class="box-1x2">

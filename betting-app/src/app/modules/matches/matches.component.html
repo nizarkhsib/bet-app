@@ -1,12 +1,14 @@
-<div class="center" style="margin-top: 260px;">
-    <ng-container *ngFor="let parisParDate of listeParis; let i=index;">
-        <div>
-            <div class="date-header fixed" style="margin-top: 225px; font-size: 15px;">
-                {{ currentSectionName | date }}
+<div class="center">
+    <div *ngIf="listeParis.length > 0">
+        <div class="date-header fixed" style=" font-size: 15px;">
+            <div id="style-2" style="width: 200px; color: white;">
+                <mat-select (selectionChange)="selectionChange($event)" [disableOptionCentering]="true" panelClass="myPanelClass" name="countryString" placeholder="{{listeParis[0].date | date }}" [selected]="selectedDate">
+                    <mat-option *ngFor="let parisParDate of listeParis;" [value]="parisParDate"><b>{{parisParDate.date | date }}</b></mat-option>
+                </mat-select>
             </div>
-            <app-team-box (sectionPosition)="sectionPosition($event)" [parisParDate]="parisParDate"></app-team-box>
         </div>
-
-
-    </ng-container>
+        <div>
+            <app-team-box (sectionPosition)="sectionPosition($event)" [parisParDate]="selectedDate"></app-team-box>
+        </div>
+    </div>
 </div>

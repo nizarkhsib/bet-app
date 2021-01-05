@@ -50,7 +50,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
     loading = false;
 
-    bestBets: any[] = [];
+    loadingTop = false;
+
+    topBets: any[] = [];
 
     // @TODO add fetch by competitions
 
@@ -140,10 +142,11 @@ export class HomeComponent implements OnInit, AfterViewInit {
     }
 
     getTopBets(): void {
+        this.loadingTop = true;
         this.matchesService.getTopBets().subscribe(
             result => {
-                console.log('result', result);
-                this.bestBets = result;
+                this.topBets = result;
+                this.loadingTop = false;
             }
         );
     }
@@ -172,6 +175,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
                             ),
                             map(arr => ({ date: arr[0], liste: arr.slice(1) }))
                         );
+
                     example.subscribe(val => {
                         this.parisGroupedByDate.push(val);
                     },

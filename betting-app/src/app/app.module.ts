@@ -50,7 +50,11 @@ import { HeaderComponent } from './modules/header/header.component';
         ChartsModule,
         MatIconModule
     ],
-    providers: [SportService, CompetitionsService, MatchesService, HeaderService],
+    providers: [
+        SportService,
+        CompetitionsService,
+        MatchesService,
+        HeaderService],
     bootstrap: [AppComponent],
     schemas: [NO_ERRORS_SCHEMA]
 })

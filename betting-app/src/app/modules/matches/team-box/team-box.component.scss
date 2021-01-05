@@ -1,111 +1,3 @@
-.flex-container {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    border: 0px solid silver;
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -moz-flex;
-    display: -webkit-flex;
-    align-items: center;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 400px);
-    justify-content: center;
-
-    @media (max-width: 685px) {
-        margin-top: 205px;
-        margin-bottom: 100px
-            /* CSS that should be displayed if width is equal to or less than 800px goes here */
-    }
-
-    .teams-item {
-        // background: #1976d2;
-        background-color: aliceblue;
-        // background: mediumseagreen;
-        padding: 5px;
-        width: 80%;
-        // height: 36px;
-        margin-bottom: 20px;
-        margin-top: 20px;
-        margin-right: 31px;
-        margin-left: 40px;
-        border-style: solid;
-        border-radius: 0.3em;
-        border-width: 1px;
-        line-height: 47px;
-        color: white;
-        // font-weight: bold;
-        font-size: 3.2em;
-        text-align: left;
-        font-family: Roboto, Arial, sans-serif;
-
-        .add-btn {
-            float: right;
-            background-color: white;
-            color: black;
-            text-align: center;
-            margin-top: -2px;
-        }
-
-        .flex-1x2-container {
-            padding: 0;
-            margin: 0;
-            list-style: none;
-            border: 0px solid silver;
-            -ms-box-orient: horizontal;
-            display: -webkit-box;
-            display: -moz-box;
-            display: -ms-flexbox;
-            display: -moz-flex;
-            display: -webkit-flex;
-            display: flex;
-            font-size: 2em;
-
-            .choice-1n2-container {
-                background: black;
-                padding: 5px;
-                width: 100%;
-                // height: 22px;
-                margin: -5px;
-                line-height: 20px;
-                color: white;
-                font-weight: bold;
-                font-size: 0.5em;
-                text-align: left;
-                border: 1px solid silver;
-                display: grid;
-                grid-auto-flow: column;
-
-                .box-1x2 {
-                    background-color: #89BA17;
-                    width: 20px;
-                    text-align: center;
-                    border-radius: 0.2em;
-                }
-
-                .box-1x2-cote {
-                    // background-color:#89BA17;
-                    width: 20px;
-                    text-align: center;
-                    border-radius: 0.2em;
-                }
-
-            }
-
-            .choice-1n2-container:hover {
-                background-color: white;
-                color: black;
-                cursor: grab;
-            }
-
-        }
-
-
-    }
-}
-
 .date-header {
     top: 0px;
     width: 100%;
@@ -115,4 +7,80 @@
     text-align: center;
     font-size: 4em;
     font-style: bold;
+}
+
+.teams-item {
+    padding: 5px;
+    width: 80%;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-left: 40px;
+    border-style: solid;
+    border-radius: 0.3em;
+    border-width: 1px;
+    line-height: 47px;
+    font-size: 3.2em;
+    text-align: left;
+    font-family: Roboto, Arial, sans-serif;
+
+    .add-btn {
+        float: right;
+        background-color: white;
+        color: black;
+        text-align: center;
+        margin-top: -2px;
+    }
+
+    .flex-1x2-container {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        border: 0px solid silver;
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        font-size: 2em;
+
+        .choice-1n2-container {
+            background: black;
+            padding: 5px;
+            width: 100%;
+            margin: -5px;
+            line-height: 20px;
+            color: white;
+            font-weight: bold;
+            font-size: 0.5em;
+            text-align: left;
+            border: 1px solid silver;
+            display: grid;
+            grid-auto-flow: column;
+
+            .box-1x2 {
+                background-color: #89BA17;
+                width: 20px;
+                text-align: center;
+                border-radius: 0.2em;
+            }
+
+            .box-1x2-cote {
+                width: 20px;
+                text-align: center;
+                border-radius: 0.2em;
+            }
+
+        }
+
+        .choice-1n2-container:hover {
+            background-color: white;
+            color: black;
+            cursor: grab;
+        }
+
+    }
+
+
 }

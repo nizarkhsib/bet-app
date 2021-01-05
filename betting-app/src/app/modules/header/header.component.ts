@@ -14,12 +14,10 @@ export class HeaderComponent implements OnInit {
         this.authenticationService.currentUser.subscribe(
             (current) => {
                 this.currentUser = current;
-                console.log('current', this.currentUser);
             }
         );
     }
     ngOnInit(): void {
-        throw new Error('Method not implemented.');
     }
 
     logout(): void {

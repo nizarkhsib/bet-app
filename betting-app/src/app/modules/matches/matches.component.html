@@ -1,14 +1,33 @@
 <div class="center">
-    <div *ngIf="listeParis.length > 0">
+    <div>
         <div class="date-header fixed" style=" font-size: 15px;">
-            <div id="style-2" style="width: 200px; color: white;">
-                <mat-select (selectionChange)="selectionChange($event)" [disableOptionCentering]="true" panelClass="myPanelClass" name="countryString" placeholder="{{listeParis[0].date | date }}" [selected]="selectedDate">
+            <div id="style-2" style="width: 200px;">
+                <mat-select *ngIf="listeParis.length > 0" (selectionChange)="selectionChange($event)" [disableOptionCentering]="true" panelClass="myPanelClass" name="countryString" placeholder="{{listeParis[0].date | date }}" [selected]="selectedParis">
                     <mat-option *ngFor="let parisParDate of listeParis;" [value]="parisParDate"><b>{{parisParDate.date | date }}</b></mat-option>
                 </mat-select>
+                <div style="width: 200px; color: white;">
+                    <mat-spinner *ngIf="listeParis.length === 0 || !listeParis.length"></mat-spinner>
+                </div>
             </div>
+
         </div>
-        <div>
-            <app-team-box (sectionPosition)="sectionPosition($event)" [parisParDate]="selectedDate"></app-team-box>
+
+        <!-- <div class="row">
+            <div class="col-2 affix" style="background-color: blue; overflow: hidden;">
+                hehe
+            </div>
+            <div class="col-10">
+                <app-team-box (sectionPosition)="sectionPosition($event)" [parisParDate]="selectedDate">
+                </app-team-box>
+            </div>
+        </div> -->
+
+
+        <div class="flex-container-bets">
+            <ng-container *ngFor="let paris of selectedParis.liste">
+                <app-team-box (sectionPosition)="sectionPosition($event)" [paris]="paris">
+                </app-team-box>
+            </ng-container>
         </div>
     </div>
 </div>

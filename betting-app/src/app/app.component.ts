@@ -14,7 +14,6 @@ export class AppComponent {
         this.authenticationService.currentUser.subscribe(
             (current) => {
                 this.currentUser = current;
-                console.log('current', this.currentUser);
             }
         );
     }

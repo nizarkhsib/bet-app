@@ -1,12 +1,8 @@
 <div class="center-header" *ngIf="competitionsArray">
-    <ul class="flex-container wrap fixed" style="text-align: center; z-index:1;">
+    <ul class="flex-container wrap fixed" style="background-color:rgb(31, 31, 31); text-align: center; z-index:1;">
 
         <mat-form-field class="flex-competition-select" appearance="fill">
-            <!-- <mat-label class="xxx"><b>TOUS LES SPORTS</b></mat-label> -->
-
-            <!-- <mat-label ><b>SPORT</b></mat-label> -->
-
-            <mat-select (selectionChange)="getCompetitionsList($event.value)" [(ngModel)]="selectedSport">
+            <mat-select [disableOptionCentering]="true" (selectionChange)="getCompetitionsList($event.value)" [(ngModel)]="selectedSport">
                 <mat-option *ngFor="let sport of sportsArray" [value]="sport.id">
                     <!-- <i class="fas fa-volleyball-ball"></i> -->
                     <mat-label> <b>{{sport.name | uppercase}}</b></mat-label>
@@ -34,10 +30,34 @@
         <mat-spinner mode="indeterminate" *ngIf="loading && selectedCompetitions.length !== 0" mode="indeterminate"></mat-spinner>
     </div>
 
-    <div class="bloc-offre-1x2" *ngIf="!loading">
+    <!-- Initial bets -->
+    <div>
+        <div class="flex-container wrap" *ngIf=" !loadingTop && !parisGroupedByDate.length">
+            <div class="date-header fixed" style=" font-size: 15px;">
+                <div id="style-2" style="width: 200px;">
+
+                    <div style="width: 200px; color: white;">
+                        hehe
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="bloc-offre-1x2">
+                    <div *ngFor="let paris of topBets">
+                        <app-team-box [paris]="paris"></app-team-box>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="bloc-offre-1x2" *ngIf="!loading && parisGroupedByDate.length > 0">
 
         <app-matches [listeParis]="parisGroupedByDate"></app-matches>
-
     </div>
+    <!-- <mat-spinner>
+
+    </mat-spinner> -->
 
 </div>

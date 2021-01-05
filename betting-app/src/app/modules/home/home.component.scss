@@ -5,10 +5,7 @@
 
     .flex-container {
         padding: 0;
-        // margin-top: 10px;
-        // margin-bottom: 20px;
         list-style: none;
-        // border: 1px solid white;
         -ms-box-orient: horizontal;
         background-color: black;
         display: -webkit-box;
@@ -17,14 +14,10 @@
         display: -moz-flex;
         display: -webkit-flex;
         align-items: center;
-        // display: grid;
-        // padding: 18px 0 0px 0px;
         grid-template-columns: repeat(auto-fill, 400px);
         justify-content: center;
         width: 100%;
         margin-top: 56px;
-        // margin-top: 10px;
-        // height: 165px;
 
         .flex-item {
             background: #1976d2;
@@ -88,6 +81,17 @@
 
 .bloc-offre-1x2 {
     margin-top: 150px;
+    // width: 500px
+}
+
+.bloc-offre-1x2-main {
+    margin-top: 150px;
+    // margin-left: 12%;
+    width: 450px;
+
+    @media (max-width: 685px) {
+        margin-left: 0%;
+    }
 }
 
 // ::ng-deep .mat-option {

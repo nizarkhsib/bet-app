@@ -63,19 +63,4 @@ exports.findSentRequests = (req, res) => {
 
             return res.send(data);
         })
-
-    // FriendRequest.findByFrom(from)
-    //     .then(data => {
-    //         if (!data)
-    //             res.status(404).send({ message: "Not found friend request with of user " + from });
-    //         else {
-    //             res.send(data);
-    //         }
-
-    //     })
-    //     .catch(err => {
-    //         res
-    //             .status(500)
-    //             .send({ message: "Not found friend request with of user " + from });
-    //     });
 };

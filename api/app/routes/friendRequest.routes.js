@@ -16,6 +16,7 @@ module.exports = function (app) {
      */
     app.post("/api/friends/send-request", [authJwt.verifyToken], controller.sendRequest);
 
-    // /api/friends/my-friend-requests
-    app.get("/api/friends/my-sent-requests/:username", [authJwt.verifyToken], controller.findSentRequests);
+    app.get("/api/friends/my-sent-requests/:username", [authJwt.verifyToken], controller.mySentRequests);
+
+    app.get("/api/friends/my-received-requests/:username", [authJwt.verifyToken], controller.myReceivedRequests);
 };

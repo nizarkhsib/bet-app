@@ -43,12 +43,35 @@ exports.sendRequest = (req, res) => {
 };
 
 /**
- * 
+ * /api/friends/my-sent-requests/:username
  */
-exports.findSentRequests = (req, res) => {
+exports.mySentRequests = (req, res) => {
 
     FriendRequest.find({
         from: req.params.username
+    }).exec(
+        (err, data) => {
+            console.log('req.params.from', req.params.from);
+            if (err) {
+                res.status(500).send({ message: err });
+                return;
+            }
+
+            if (!data) {
+                return res.status(404).send({ message: "Not friend request found." });
+            }
+
+            return res.send(data);
+        })
+};
+
+/**
+ * /api/friends/my-received-requests/:username
+ */
+exports.myReceivedRequests = (req, res) => {
+
+    FriendRequest.find({
+        to: req.params.username
     }).exec(
         (err, data) => {
             console.log('req.params.from', req.params.from);

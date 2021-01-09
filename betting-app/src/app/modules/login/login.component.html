@@ -1,33 +1,3 @@
-<!-- <mat-card>
-    <h2 style="color:black;">Login</h2>
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-            <label for="username">Nom de utilisateur</label>
-            <input type="text" formControlName="username" class="form-control" />
-            <div *ngIf="f.username.errors" class="invalid-feedback">
-                <div *ngIf="f.username.errors.required">Username is required</div>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="password">Mot de passe</label>
-            <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />*
-            <input type="password" formControlName="password" class="form-control" />
-            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                <div *ngIf="f.password.errors.required">Password is required</div>
-            </div>
-        </div>
-        <div class="form-group">
-            <button mat-raised-button color="primary">
-                <span class="spinner-border spinner-border-sm mr-1"></span>
-                Login
-            </button>
-            <a routerLink="/register" class="btn btn-link">
-                Register
-            </a>
-        </div>
-    </form>
-</mat-card> -->
-
 <div class="col-md-6 offset-md-3 mt-5">
     <!-- <div class="alert alert-info">
         Username: test<br />
@@ -35,13 +5,13 @@
     </div> -->
     <mat-card>
         <div class="card">
-            <h4 class="card-header" style="color:black;">Login</h4>
+            <h4 class="card-header" style="color:black; background-color: skyblue;">Login</h4>
             <div class="card-body">
                 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                     <div class="form-group">
                         <mat-form-field style="display:block;">
                             <mat-label for="username">Username</mat-label>
-                            <input matInput type="text" formControlName="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+                            <input matInput placeholder="Username" type="text" formControlName="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
                             <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
                                 <div *ngIf="f.username.errors.required">Username is required</div>
                             </div>
@@ -52,16 +22,22 @@
                     <div class="form-group">
                         <mat-form-field>
                             <mat-label for="password">Password</mat-label>
-                            <input matInput type="password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                            <input matInput placeholder="Password" type="password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
                             <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
                                 <div *ngIf="f.password.errors.required">Password is required</div>
                             </div>
                         </mat-form-field>
                     </div>
-                    <button mat-raised-button [disabled]="loading || loginForm.invalid" color="primary">
+                    <button class="full-width" mat-raised-button [disabled]="loading || loginForm.invalid" color="primary">
                         <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                         Login
                     </button>
+                    <hr>
+                    <button [routerLink]="['/register']" class="register-button" mat-raised-button color="primary">
+                        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                        Register
+                    </button>
+
                     <mat-error *ngIf="error" style="text-align: center;">
                         <b>Bad username or password !</b>
                     </mat-error>

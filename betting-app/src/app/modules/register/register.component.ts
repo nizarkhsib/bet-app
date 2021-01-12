@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
+import { UsersService } from 'src/app/shared/services/users.service';
 @Component({
     selector: 'app-register',
     templateUrl: './register.component.html',
@@ -11,12 +12,14 @@ export class RegisterComponent implements OnInit {
     registerForm: FormGroup;
     loading = false;
     submitted = false;
+    registerError = false;
+    errorMessage = '';
 
     constructor(
         private formBuilder: FormBuilder,
         private router: Router,
         // private authenticationService: AuthenticationService,
-        // private userService: UserService,
+        private userService: UsersService,
         // private alertService: AlertService
     ) {
         // redirect to home if already logged in
@@ -43,18 +46,29 @@ export class RegisterComponent implements OnInit {
         if (this.registerForm.invalid) {
             return;
         }
+        const register = {
+            email: this.registerForm.controls.email.value,
+            username: this.registerForm.controls.email.value,
+            password: this.registerForm.controls.email.value,
+        };
 
         this.loading = true;
-        // this.userService.register(this.registerForm.value)
-        //     .pipe(first())
-        //     .subscribe(
-        //         data => {
-        //             this.alertService.success('Registration successful', true);
-        //             this.router.navigate(['/login']);
-        //         },
-        //         error => {
-        //             this.alertService.error(error);
-        //             this.loading = false;
-        //         });
+        this.userService.register(this.registerForm.value)
+            .pipe(first())
+            .subscribe(
+                data => {
+                    // this.alertService.success('Registration successful', true);
+                    this.router.navigate(['/login']);
+                    console.log('data', data);
+                },
+                error => {
+                    // this.alertService.error(error);
+                    console.log('error', error);
+                    this.registerError = true;
+                    this.errorMessage = error.error.message;
+                    console.log('errorMessage', this.errorMessage);
+                    // this.registerForm.reset();
+                    this.loading = false;
+                });
     }
 }

@@ -105,7 +105,7 @@
     top: 0px;
     width: 100%;
     z-index: 2;
-    background-color: #2795cb;
+    background-color: rgb(247, 247, 247);
     line-height: 35px;
     text-align: center;
     font-size: 4em;
@@ -113,7 +113,7 @@
     font-style: bold;
     color: white;
     display: flex;
-    justify-content: center;
+    // justify-content: center;
 
     @media (max-width: 685px) {
         margin-top: 176px;
@@ -121,9 +121,8 @@
             /* CSS that should be displayed if width is equal to or less than 800px goes here */
     }
 
-    margin-top: 116px;
+    margin-top: 64px;
     position: fixed;
-
 
 }
 
@@ -131,6 +130,10 @@
     color: black !important;
 }
 
+.cdk-overlay-container .cdk-overlay-pane {
+    margin-top: 7%;
+}
+
 .myPanelClass {
-    margin: 25px 0px;
+    margin-top: 35px !important;
 }

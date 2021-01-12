@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from 'src/app/shared/models/user';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
 
@@ -10,7 +11,8 @@ import { AuthenticationService } from 'src/app/shared/services/authentication.se
 export class HeaderComponent implements OnInit {
 
     currentUser: User = null;
-    constructor(private authenticationService: AuthenticationService) {
+    constructor(private authenticationService: AuthenticationService,
+                private router: Router) {
         this.authenticationService.currentUser.subscribe(
             (current) => {
                 this.currentUser = current;
@@ -22,6 +24,10 @@ export class HeaderComponent implements OnInit {
 
     logout(): void {
         this.authenticationService.logout();
+    }
+
+    navigateToFriends(): void {
+        this.router.navigate(['/login']);
     }
 
 }

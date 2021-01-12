@@ -54,6 +54,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
     topBets: any[] = [];
 
+    selection: Competition[] = [];
+
     // @TODO add fetch by competitions
 
     constructor(public fb: FormBuilder,
@@ -90,10 +92,19 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
                 result.forEach(sport => {
                     if (sport.hasBet) {
-                        this.sportsArray.push(sport);
+
+                        this.competitionService.getAll(sport.id).subscribe(
+                            (competitions: Competition[]) => {
+                                sport.competitions = competitions;
+                                this.sportsArray.push(sport);
+                            }
+                        );
                     }
                 });
-                this.getCompetitionsList(this.selectedSport);
+
+                // sport + competition
+
+                // this.getCompetitionsList(this.selectedSport);
 
                 this.selectionService.getCurrentSelectedCompetitions().subscribe(
                     competitions => {
@@ -101,6 +112,35 @@ export class HomeComponent implements OnInit, AfterViewInit {
                     }
                 );
 
+            }
+        );
+    }
+
+    selectionChange(event, competition: Competition): void {
+
+        if (event === true) {
+            const x = this.selection.find(sel => sel === competition);
+
+            if (x === undefined) {
+                this.selection.push(competition);
+                this.selectionService.addCompetition(competition);
+            }
+            console.log('selection', this.selection);
+        }
+        if (event === false) {
+
+            const index = this.selection.indexOf(competition);
+
+            if (index > -1) {
+
+                this.selection.splice(index, 1);
+                this.selectionService.removeCompetition(competition);
+            }
+        }
+        this.selectionService.getCurrentSelectedCompetitions().subscribe(
+            competitions => {
+                this.selectedCompetitions = competitions;
+                this.loadMatches();
             }
         );
     }

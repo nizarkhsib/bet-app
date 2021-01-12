@@ -128,3 +128,7 @@
 // .fixed {
 //     position: fixed;
 // }
+
+::ng-deep .mat-menu-panel {
+    width: 180px !important;
+}

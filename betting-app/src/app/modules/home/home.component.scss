@@ -71,6 +71,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 200px;
+    z-index: 10000;
 }
 
 .xxx {
@@ -80,7 +82,7 @@
 }
 
 .bloc-offre-1x2 {
-    margin-top: 150px;
+    margin-top: 140px;
     // width: 500px
 }
 
@@ -138,3 +140,14 @@
 //     color: black !important;
 
 // }
+
+.side-nav {
+    position: fixed;
+    width: 316px;
+    height: 100vh;
+    left: 0;
+    right: 0;
+    overflow-y: scroll;
+    top: 60px;
+    padding: 20px;
+}

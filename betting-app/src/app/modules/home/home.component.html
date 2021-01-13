@@ -1,30 +1,4 @@
 <div class="center-header" *ngIf="competitionsArray">
-    <ul class="flex-container wrap fixed" style="background-color:rgb(31, 31, 31); text-align: center; z-index:1;">
-
-        <!-- <mat-form-field class="flex-competition-select" appearance="fill">
-            <mat-select [disableOptionCentering]="true" (selectionChange)="getCompetitionsList($event.value)" [(ngModel)]="selectedSport">
-                <mat-option *ngFor="let sport of sportsArray" [value]="sport.id">
-                <i class="fas fa-volleyball-ball"></i> 
-                    <mat-label> <b>{{sport.name | uppercase}}</b></mat-label>
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-
-        <mat-form-field (click)="selectClicked($event)" class="flex-competition-select" appearance="fill">
-
-            <mat-label class="xxx" *ngIf="selectedCompetitions.length == 0 ">TOUTES COMPÉTITIONS</mat-label>
-            <mat-label class="xxx" *ngIf="selectedCompetitions.length > 0 ">
-                <b>
-                    ( {{selectedCompetitions.length}} )
-                </b> COMPÉTITIONS
-            </mat-label>
-
-            <mat-select>
-
-            </mat-select>
-        </mat-form-field> -->
-
-    </ul>
 
     <!-- <div class="spinner">
         <mat-spinner mode="indeterminate" *ngIf="loading && selectedCompetitions.length !== 0" mode="indeterminate"></mat-spinner>
@@ -32,7 +6,7 @@
 
     <!-- Initial bets -->
     <div class="row">
-        <div class="col-2" style="margin-top: 100px;overflow-y: hidden;">
+        <div style="width : 250px; overflow-y: hidden;">
             <div class="side-nav ">
                 <mat-accordion>
                     <ng-container *ngFor="let sport of sportsArray">
@@ -52,28 +26,31 @@
                     </ng-container>
                 </mat-accordion>
             </div>
-
         </div>
-        <!-- 
-     -->
-        <div class="col-10">
 
-            <!-- <div class="flex-container wrap" *ngIf=" !loadingTop && !parisGroupedByDate.length">
+        <div class="bloc-offre-1x2">
 
-                <div class="row">
-                    <div class="bloc-offre-1x2">
-                        <div *ngFor="let paris of topBets">
-                            <app-team-box [paris]="paris"></app-team-box>
-                        </div>
+            <div class="flex-container wrap" *ngIf=" !loadingTop && !parisGroupedByDate.length">
+                <br>
+                <h2 style="color:white;margin-top: 10px;">Top bets </h2>
+                <div class="bloc-offre-1x2">
+
+                    <div *ngFor="let paris of topBets">
+                        <app-team-box [paris]="paris"></app-team-box>
                     </div>
                 </div>
-            </div> -->
 
-            <div class="bloc-offre-1x2" *ngIf="!loading && parisGroupedByDate.length > 0">
+            </div>
+        </div>
+
+        <div class="bloc-offre-1x2" style="margin-top: 180px;">
+            <div *ngIf="!loading && parisGroupedByDate.length > 0">
                 <app-matches [listeParis]="parisGroupedByDate"></app-matches>
             </div>
         </div>
+
     </div>
+
 
 
 

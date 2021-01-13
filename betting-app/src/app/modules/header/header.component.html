@@ -1,134 +1,65 @@
-<!-- <nav class="toolbar navbar navbar-light justify-content-between fixed">
-    <a class="navbar-brand">
-        <i class="fa fa-futbol-o" aria-hidden="true"></i>
-        Bête Potes
-    </a>
-    <form class="form-inline">
-        <div class="example-button-container">
-            <span matTooltip="Mes e-bulletin" class="material-icons qr-icon" [routerLink]="['/panier']" [inline]="true">
-                qr_code_scanner
-            </span>
-            <span class="dot">0</span>
-            <mat-form-field>
-                <div style="margin-bottom:-30px;">
-                    <mat-icon style="margin-top:-2px" matPrefix></mat-icon>
-                </div>
-                <span matPrefix>
-                    <mat-icon matPrefix>search</mat-icon>
-                </span>
-                <input matInput placeholder="Search a friend" type="text" />
-
-            </mat-form-field>
-        </div>
-
-        <span>
-            <button *ngIf="!currentUser" mat-raised-button [routerLink]="['/login']" color="basic" aria-label="Example icon button with a menu icon">
-                Login
-            </button>
-
-
-
-            <button mat-mini-fab *ngIf="currentUser" [matMenuTriggerFor]="menu" color="basic" aria-label="Example icon button with a menu icon">
-                <mat-icon>menu</mat-icon>
-            </button>
-    
-            <mat-menu #menu="matMenu">
-                <button mat-menu-item color="primary" color="basic">
-                    <mat-icon class="material-icons">
-                        account_circle
-                    </mat-icon>
-                    <span>
-                        Profile
-                    </span>
-                </button>
-
-                <button mat-menu-item (click)="navigateToFriends()" color="basic">
-                    <mat-icon class="material-icons">
-                        people
-                    </mat-icon>
-                    <span>
-                        Friends
-                    </span>
-                </button>
-
-                <button mat-menu-item (click)="logout()" color="basic">
-                    <mat-icon class="material-icons">
-                        login
-                    </mat-icon>
-                    <span>
-                        Logout
-                    </span>
-
-                </button>
-            </mat-menu>
-        </span>
-    </form>
-
-</nav> -->
-
-
-<mat-toolbar style="position: fixed; z-index: 1000; background-color: lightskyblue; top:0;">
+<mat-toolbar style="position: fixed; z-index: 1000; background-color: yellowgreen; top:0;">
 
 
     <mat-toolbar-row>
-        <form class="form-inline">
-            <span class="navbar-brand">
-                <i class="fa fa-futbol-o" aria-hidden="true"></i>
-                Bête Potes
+
+        <span class="navbar-brand">
+            <i class="fa fa-futbol-o" aria-hidden="true"></i>
+            Bête Potes
+        </span>
+
+
+
+
+        <span class="spacer"></span>
+        <mat-form-field>
+            <div style="margin-bottom:-30px;">
+                <mat-icon style="margin-top:-2px" matPrefix></mat-icon>
+            </div>
+            <span matPrefix>
+                <mat-icon matPrefix>search</mat-icon>
             </span>
-            <!-- 
-            <mat-form-field>
-                <div style="margin-bottom:-30px;">
-                    <mat-icon style="margin-top:-2px" matPrefix></mat-icon>
-                </div>
-                <span matPrefix>
-                    <mat-icon matPrefix>search</mat-icon>
+            <input matInput placeholder="Search a friend" type="text" />
+
+        </mat-form-field>
+
+        <button fxFlex fxLayoutAlign="flex-end center" *ngIf="!currentUser" mat-raised-button [routerLink]="['/login']" color="basic" aria-label="Example icon button with a menu icon">
+            Login
+        </button>
+
+        <button mat-mini-fab *ngIf="currentUser" [matMenuTriggerFor]="menu" color="basic" aria-label="Example icon button with a menu icon">
+            <mat-icon>menu</mat-icon>
+        </button>
+
+        <mat-menu #menu="matMenu" class="menu">
+            <button mat-menu-item color="primary" color="basic">
+                <mat-icon class="material-icons">
+                    account_circle
+                </mat-icon>
+                <span>
+                    Profile
                 </span>
-                <input matInput placeholder="Search a friend" type="text" />
-
-            </mat-form-field> -->
-
-            <button fxFlex fxLayoutAlign="flex-end center" *ngIf="!currentUser" mat-raised-button [routerLink]="['/login']" color="basic" aria-label="Example icon button with a menu icon">
-                Login
             </button>
 
-
-            <button mat-mini-fab *ngIf="currentUser" [matMenuTriggerFor]="menu" color="basic" aria-label="Example icon button with a menu icon">
-                <mat-icon>menu</mat-icon>
+            <button mat-menu-item (click)="navigateToFriends()" color="basic">
+                <mat-icon class="material-icons">
+                    people
+                </mat-icon>
+                <span>
+                    Friends
+                </span>
             </button>
 
-            <mat-menu #menu="matMenu" class="menu">
-                <button mat-menu-item color="primary" color="basic">
-                    <mat-icon class="material-icons">
-                        account_circle
-                    </mat-icon>
-                    <span>
-                        Profile
-                    </span>
-                </button>
+            <button mat-menu-item (click)="logout()" color="basic">
+                <mat-icon class="material-icons">
+                    login
+                </mat-icon>
+                <span>
+                    Logout
+                </span>
 
-                <button mat-menu-item (click)="navigateToFriends()" color="basic">
-                    <mat-icon class="material-icons">
-                        people
-                    </mat-icon>
-                    <span>
-                        Friends
-                    </span>
-                </button>
-
-                <button mat-menu-item (click)="logout()" color="basic">
-                    <mat-icon class="material-icons">
-                        login
-                    </mat-icon>
-                    <span>
-                        Logout
-                    </span>
-
-                </button>
-            </mat-menu>
-
-        </form>
-
+            </button>
+        </mat-menu>
 
 
 

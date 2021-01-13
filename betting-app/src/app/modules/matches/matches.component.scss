@@ -1,5 +1,5 @@
 .center {
-    background-color: black;
+    // background-color: black;
 
     min-height: 100vh;
 
@@ -112,13 +112,14 @@
     z-index: 1;
     font-style: bold;
     color: white;
-    display: flex;
     // justify-content: center;
+    margin-left: 10px;
 
     @media (max-width: 685px) {
-        margin-top: 176px;
-        margin-bottom: 100px
-            /* CSS that should be displayed if width is equal to or less than 800px goes here */
+        // margin-top: 176px;
+        // margin-bottom: 100px
+        margin-left: 15px;
+        margin-top: 50px;
     }
 
     margin-top: 64px;

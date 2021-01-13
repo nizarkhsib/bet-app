@@ -81,9 +81,26 @@
     font-size: 20px;
 }
 
+.bloc-offre-1x2-main {
+    margin-left: 340px;
+    width: 100%;
+
+    /* CSS that should be displayed if width is equal to or less than 800px goes here */
+    @media (max-width: 800px) {
+        margin-left: 0px;
+    }
+}
+
+
 .bloc-offre-1x2 {
-    margin-top: 140px;
-    // width: 500px
+    // margin-top: 55px;
+    margin-left: 340px;
+    width: 100%;
+
+    /* CSS that should be displayed if width is equal to or less than 800px goes here */
+    @media (max-width: 800px) {
+        margin-left: 0px;
+    }
 }
 
 .bloc-offre-1x2-main {
@@ -96,51 +113,6 @@
     }
 }
 
-// ::ng-deep .mat-option {
-//     color: black;
-//     background-color: white;
-// }
-
-// ::ng-deep .mat-button {
-//     background-color: #89ba17 !important;
-//     width: 50%;
-//     height: 100%;
-
-// }
-
-// ::ng-deep .mat-form-field-wrapper {
-//     position: inherit !important;
-//     padding-bottom: 0em !important;
-// }
-
-// ::ng-deep .mat-form-field-underline {
-//     display: none;
-// }
-
-// ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
-//     // background-color: #89BA17;
-//     background-color: #89BA17;
-// }
-
-// ::ng-deep .mat-select-value {
-//     color: white !important;
-//     font-size: 20px;
-//     margin-bottom: 20px;
-// }
-
-// ::ng-deep .mat-form-field-infix {
-//     color: white !important;
-// }
-
-// ::ng-deep .mat-select-placeholder {
-//     color: white !important;
-// }
-
-// ::ng-deep .mat-option-text {
-//     color: black !important;
-
-// }
-
 .side-nav {
     position: fixed;
     width: 316px;
@@ -150,4 +122,10 @@
     overflow-y: scroll;
     top: 60px;
     padding: 20px;
+    background-color: black;
+
+    /* CSS that should be displayed if width is equal to or less than 800px goes here */
+    @media (max-width: 800px) {
+        display: none;
+    }
 }

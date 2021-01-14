@@ -1,33 +1,23 @@
 <div class="center">
-    <!-- border:2px solid black;border-radius: 5px; -->
+
     <div class="date-header fixed" style=" font-size: 15px; color:black;">
         <mat-card style="width: 100%;">
-            <div>
-                <div class="row">
 
-                    <div style="width: 200px;background-color: white;">
-                        <mat-form-field>
-                            <mat-label style="margin-left:10px; margin-right: 10px;">Date : </mat-label>
-                            <mat-select *ngIf="listeParis.length > 0" (selectionChange)="selectionChange($event)" disableOptionCentering panelClass="myPanelClass" placeholder="{{listeParis[0].date | date }}" [selected]="selectedParis">
-                                <mat-option *ngFor="let parisParDate of listeParis;" [value]="parisParDate"><b>{{parisParDate.date | date }}</b></mat-option>
-                            </mat-select>
-                        </mat-form-field>
+            <div style="width:300px; background-color: white;">
 
-                        <div style="width: 200px; color: white;">
-                            <mat-spinner *ngIf="listeParis.length === 0 || !listeParis.length"></mat-spinner>
-                        </div>
-                    </div>
-                </div>
-
+                <mat-label style="width:100px;" style="margin-left:10px; margin-right: 10px;">Date : </mat-label>
+                <mat-select style="width:200px;border: 0px solid;border-radius: 7px; background-color: skyblue;" *ngIf="listeParis.length > 0" (selectionChange)="selectionChange($event)" disableOptionCentering panelClass="myPanelClass" placeholder="{{listeParis[0].date | date }}" [selected]="selectedParis">
+                    <mat-option *ngFor="let parisParDate of listeParis;" [value]="parisParDate"><b>{{parisParDate.date | date }}</b></mat-option>
+                </mat-select>
             </div>
         </mat-card>
     </div>
 
-    <mat-card style="background-color: black;margin-left: 10px  ;min-height: 100vh;">
+    <mat-card style="background-color: black;margin-left: 10px  ;min-height: 100vh;     transition: 0.5s;">
         <div class="flex-container-bets">
 
             <ng-container *ngFor="let paris of selectedParis.liste">
-                <app-team-box (sectionPosition)="sectionPosition($event)" [paris]="paris">
+                <app-team-box [paris]="paris">
                 </app-team-box>
             </ng-container>
 

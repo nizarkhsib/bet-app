@@ -8,7 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 export class HeaderService {
 
     currentHeaderDate = new BehaviorSubject('');
-
+    displayMenuIcon = new BehaviorSubject(undefined);
     constructor(private httpClient: HttpClient) {
 
     }

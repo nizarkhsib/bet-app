@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ElementRef, ViewChild, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ElementRef, ViewChild, ChangeDetectionStrategy, Output, EventEmitter, HostListener } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { FormBuilder } from '@angular/forms';
 import { from, Subject } from 'rxjs';
@@ -13,6 +13,8 @@ import { CompetitionsService } from 'src/app/shared/services/competitions.servic
 import { MatchesService } from 'src/app/shared/services/matches.services';
 import { SportService } from 'src/app/shared/services/sport.service';
 import { SelectionService } from 'src/app/shared/services/selection.service';
+import { HeaderService } from 'src/app/shared/services/header.service';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
     selector: 'app-home',
@@ -67,6 +69,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
                 private matchesService: MatchesService,
                 private sportService: SportService,
                 private selectionService: SelectionService,
+                private headerService: HeaderService,
+                private ngxLoader: NgxUiLoaderService,
                 private router: Router) {
     }
 
@@ -101,6 +105,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
                         );
                     }
                 });
+                // console.log('this.sportsARray', this.sportsArray);
+                this.selectionService.sportsArray.next(this.sportsArray);
 
                 // sport + competition
 
@@ -117,6 +123,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     }
 
     selectionChange(event, competition: Competition): void {
+
 
         if (event === true) {
             const x = this.selection.find(sel => sel === competition);
@@ -143,12 +150,23 @@ export class HomeComponent implements OnInit, AfterViewInit {
                 this.loadMatches();
             }
         );
+
+        this.selection.length === 0 ? this.ngxLoader.stop() : this.ngxLoader.start();
+
+        if (this.selection.length === 0) {
+            this.ngxLoader.stop();
+            this.loading = false;
+        } else {
+            this.ngxLoader.start();
+            this.loading = true;
+        }
     }
 
     getCompetitionsList(event): void {
 
         this.selectionService.competitionSubject.next([]);
         this.loading = false;
+
         this.selectedSport = event;
         this.competitionService.getAll(this.selectedSport).subscribe(
             (competitions: Competition[]) => {
@@ -192,6 +210,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
     }
 
     loadMatches(): void {
+        console.log('  this.loading', this.loading);
+        this.ngxLoader.start();
         this.loading = true;
         this.listeParis = [];
         this.parisGroupedByDate = [];
@@ -205,7 +225,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
                     this.listeParis = paris;
                     this.listeParis.sort((a, b) => new Date(a.end).getTime() - new Date(b.end).getTime());
 
-                    const example = from(
+                    const groupedByDate = from(
                         this.listeParis
                     )
                         .pipe(
@@ -216,18 +236,38 @@ export class HomeComponent implements OnInit, AfterViewInit {
                             map(arr => ({ date: arr[0], liste: arr.slice(1) }))
                         );
 
-                    example.subscribe(val => {
+                    groupedByDate.subscribe(val => {
                         this.parisGroupedByDate.push(val);
                     },
-                        err => {
+                        (err) => {
+                            console.log(err);
                         },
                         () => {
                             this.loading = false;
+                            this.ngxLoader.stop();
+                            this.parisGroupedByDate = this.removeDuplicateObjects(this.parisGroupedByDate);
                         });
                 }
             );
-
         }
+    }
+
+
+    removeDuplicateObjects = (myArr) => {
+        const uniqueArr = [];
+        const objStrings = [];
+
+        myArr.forEach((element) => {
+            if (typeof element === 'object' && element !== null) {
+                const eleString = JSON.stringify(element);
+                if (!objStrings.includes(eleString)) {
+                    uniqueArr.push(element);
+                    objStrings.push(eleString);
+                }
+            }
+        });
+
+        return uniqueArr;
     }
 }
 

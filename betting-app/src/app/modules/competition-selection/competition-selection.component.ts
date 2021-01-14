@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, Optional, ChangeDetectionStrategy, OnDestroy } from '@angular/core';
+import { Component, OnInit, Inject, Optional, ChangeDetectionStrategy, OnDestroy, Input } from '@angular/core';
 import { UserForm } from 'src/app/forms/user.form';
 import { FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -22,39 +22,49 @@ export class CompetitionSelectionComponent implements OnInit, OnDestroy {
     competitions: Competition[] = [];
     // list of selected competitions competitions
     selection: Competition[] = [];
+    sportsArray: any[] = [];
 
-    constructor(fb: FormBuilder,
-                public dialogRef: MatDialogRef<CompetitionSelectionComponent>,
-                @Optional() @Inject(MAT_DIALOG_DATA) public data: any,
-                private usersService: UsersService,
-                private selectionService: SelectionService
-    ) {
-        this.competitions = this.data.competitions;
-        this.selectionService.getCurrentSelectedCompetitions().subscribe(
-            competitions => {
-                this.selection = competitions;
-            }
-        );
+    @Input() listeParis: any[] = [];
+    selectedCompetitions: Competition[] = [];
+    constructor(private selectionService: SelectionService) {
+
     }
 
     ngOnInit(): void {
 
-    }
-
-    onNoClick(): void {
-        this.dialogRef.close('closed');
-    }
-
-    isChecked(competition: Competition): boolean {
-        if (this.selection !== null) {
-            const comp = this.selection.indexOf(competition);
-            if (comp > -1) {
-                return true;
+        this.selectionService.getCurrentSelectedCompetitions().subscribe(
+            competitions => {
+                this.selectedCompetitions = competitions;
+                // this.loadMatches();
             }
-        }
+        );
 
-        return false;
+
+        this.selectionService.sportsArray.subscribe(
+            competitions => {
+                this.sportsArray = competitions;
+                console.log('sportsArray', competitions);
+                // this.loadMatches();
+            }
+        );
+
     }
+
+
+    // onNoClick(): void {
+    //     this.dialogRef.close('closed');
+    // }
+
+    // isChecked(competition: Competition): boolean {
+    //     if (this.selection !== null) {
+    //         const comp = this.selection.indexOf(competition);
+    //         if (comp > -1) {
+    //             return true;
+    //         }
+    //     }
+
+    //     return false;
+    // }
 
     selectionChange(event, competition: Competition): void {
 
@@ -81,5 +91,38 @@ export class CompetitionSelectionComponent implements OnInit, OnDestroy {
     ngOnDestroy(): void {
         this.selection = null;
     }
+
+
+    // selectionChange(event, competition: Competition): void {
+
+
+    //     if (event === true) {
+    //         const x = this.selection.find(sel => sel === competition);
+
+    //         if (x === undefined) {
+    //             this.selection.push(competition);
+    //             this.selectionService.addCompetition(competition);
+    //         }
+    //         console.log('selection', this.selection);
+    //     }
+    //     if (event === false) {
+
+    //         const index = this.selection.indexOf(competition);
+
+    //         if (index > -1) {
+
+    //             this.selection.splice(index, 1);
+    //             this.selectionService.removeCompetition(competition);
+    //         }
+    //     }
+    //     this.selectionService.getCurrentSelectedCompetitions().subscribe(
+    //         competitions => {
+    //             this.selectedCompetitions = competitions;
+    //             this.loadMatches();
+    //         }
+    //     );
+    //     this.selection.length === 0 ? this.loading = false : this.loading = true;
+    // }
+
 
 }

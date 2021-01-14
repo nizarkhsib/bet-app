@@ -23,6 +23,17 @@ import { TeamBoxComponent } from './modules/matches/team-box/team-box.component'
 import { DemoMaterialModule } from './modules/material-module';
 import { HeaderService } from './shared/services/header.service';
 import { HeaderComponent } from './modules/header/header.component';
+import { NgxUiLoaderConfig, NgxUiLoaderModule, NgxUiLoaderRouterModule, POSITION, SPINNER } from 'ngx-ui-loader';
+
+const ngxUiLoaderConfig: NgxUiLoaderConfig = {
+    bgsColor: 'rgba(12, 80, 219, 0.98)',
+    bgsOpacity: 1,
+    bgsPosition: POSITION.bottomRight,
+    bgsSize: 40,
+    bgsType: SPINNER.threeStrings,
+    fgsColor: 'rgba(12, 80, 219, 0.98)',
+    fgsPosition: POSITION.centerCenter
+};
 
 @NgModule({
     declarations: [
@@ -48,7 +59,9 @@ import { HeaderComponent } from './modules/header/header.component';
         AppRoutingModule,
         DemoMaterialModule,
         ChartsModule,
-        MatIconModule
+        MatIconModule,
+        NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
+        NgxUiLoaderRouterModule,
     ],
     providers: [
         SportService,

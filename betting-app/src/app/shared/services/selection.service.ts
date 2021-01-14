@@ -9,6 +9,7 @@ import { Competition } from 'src/app/models/competition.model';
 export class SelectionService {
 
     competitionSubject = new BehaviorSubject<Competition[]>([]);
+    sportsArray = new BehaviorSubject<any[]>([]);
 
     constructor() {
     }

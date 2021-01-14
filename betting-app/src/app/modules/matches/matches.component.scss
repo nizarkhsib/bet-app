@@ -135,6 +135,15 @@
     margin-top: 7%;
 }
 
-.myPanelClass {
+::ng-deep .myPanelClass {
     margin-top: 35px !important;
+    background-color: lavender;
+}
+
+::ng-deep .mat-select-panel {
+    margin-top: 40px !important;
+}
+
+::ng-deep .mat-select-panel .mat-option.mat-selected:not(.mat-option-multiple) {
+    background: skyblue !important;
 }

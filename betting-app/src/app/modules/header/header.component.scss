@@ -40,3 +40,11 @@
 ::ng-deep .mat-menu-panel {
     width: 180px !important;
 }
+
+.competition-mobile-menu {
+    display: none;
+
+    @media (max-width: 800px) {
+        display: block;
+    }
+}

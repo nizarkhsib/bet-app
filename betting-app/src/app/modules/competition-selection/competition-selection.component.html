@@ -1,21 +1,29 @@
-<h1 mat-dialog-title>COMPÉTITIONS</h1>
-<mat-dialog-content class="content">
-    <ul>
-        <li class="box" *ngFor="let competition of competitions">
-            <mat-checkbox [checked]="isChecked(competition)" (change)="selectionChange($event.checked, competition)">
-                {{competition.label}}
-            </mat-checkbox>
-        </li>
-    </ul>
-</mat-dialog-content>
-<div>
-    <div class="row">
-        <div class="col-6">
-        </div>
-        <div class="col-6">
-            <div mat-dialog-actions>
-                <button mat-raised-button color="basic" class="validate-btn" (click)="onNoClick()">Valider</button>
-            </div>
-        </div>
-    </div>
-</div>
+<!-- <h2>competition selection</h2>
+
+<ng-container *ngIf="sportsArray.length > 0">
+    <ng-container *ngFor="let sport of sportsArray">
+        <mat-expansion-panel expanded *ngIf="sport.name==='football'">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <mat-label> <b>{{sport.name | uppercase}}</b></mat-label>
+                </mat-panel-title>
+
+            </mat-expansion-panel-header>
+            <ng-container *ngFor="let competition of sport.competitions">
+                <mat-checkbox class="row" (change)="selectionChange($event.checked, competition)" style="margin-left: 10px;">
+                    {{competition.label}}
+                </mat-checkbox>
+                <hr>
+            </ng-container>
+        </mat-expansion-panel>
+    </ng-container>
+</ng-container> -->
+
+<mat-expansion-panel expanded>
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            <mat-label> <b>EZIBI ?</b></mat-label>
+        </mat-panel-title>
+
+    </mat-expansion-panel-header>
+</mat-expansion-panel>

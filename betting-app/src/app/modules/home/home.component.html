@@ -4,7 +4,7 @@
         <mat-spinner mode="indeterminate" *ngIf="loading && selectedCompetitions.length !== 0" mode="indeterminate"></mat-spinner>
     </div> -->
 
-    <!-- Initial bets -->
+    <!-- Side nav -->
     <div class="row">
         <div style="width : 250px; overflow-y: hidden;">
             <div class="side-nav ">
@@ -18,22 +18,24 @@
 
                             </mat-expansion-panel-header>
                             <ng-container *ngFor="let competition of sport.competitions">
-                                <mat-checkbox class="row" (change)="selectionChange($event.checked, competition)">
+                                <mat-checkbox class="row" [disabled]="loading" (change)="selectionChange($event.checked, competition)" style="margin-left: 10px;">
                                     {{competition.label}}
                                 </mat-checkbox>
+                                <hr>
                             </ng-container>
                         </mat-expansion-panel>
                     </ng-container>
                 </mat-accordion>
             </div>
         </div>
-
+        <!-- Initial bets list -->
         <div class="bloc-offre-1x2">
 
-            <div class="flex-container wrap" *ngIf=" !loadingTop && !parisGroupedByDate.length">
+
+            <div class="flex-container wrap" *ngIf=" !loadingTop && selection.length=== 0">
                 <br>
                 <h2 style="color:white;margin-top: 10px;">Top bets </h2>
-                <div class="bloc-offre-1x2">
+                <div *ngIf="selection.length == 0" class="bloc-offre-1x2">
 
                     <div *ngFor="let paris of topBets">
                         <app-team-box [paris]="paris"></app-team-box>
@@ -43,16 +45,15 @@
             </div>
         </div>
 
+        <!-- Selection bets list -->
         <div class="bloc-offre-1x2" style="margin-top: 180px;">
-            <div *ngIf="!loading && parisGroupedByDate.length > 0">
+            <!-- <mat-spinner *ngIf="loading"></mat-spinner> -->
+            <!-- <ngx-ui-loader *ngIf="loading"></ngx-ui-loader> -->
+            <ngx-ui-loader fgsSize="75"></ngx-ui-loader>
+            <div *ngIf="parisGroupedByDate.length > 0">
                 <app-matches [listeParis]="parisGroupedByDate"></app-matches>
             </div>
         </div>
 
     </div>
-
-
-
-
-
 </div>

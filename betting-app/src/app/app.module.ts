@@ -24,6 +24,12 @@ import { DemoMaterialModule } from './modules/material-module';
 import { HeaderService } from './shared/services/header.service';
 import { HeaderComponent } from './modules/header/header.component';
 import { NgxUiLoaderConfig, NgxUiLoaderModule, NgxUiLoaderRouterModule, POSITION, SPINNER } from 'ngx-ui-loader';
+import { MainNavComponent } from './modules/main-nav/main-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     bgsColor: 'rgba(12, 80, 219, 0.98)',
@@ -48,7 +54,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
         PanierComponent,
         DateHeaderComponent,
         TeamBoxComponent,
-        HeaderComponent
+        HeaderComponent,
+        MainNavComponent
     ],
     imports: [
         BrowserModule,
@@ -62,6 +69,11 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
         MatIconModule,
         NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
         NgxUiLoaderRouterModule,
+        LayoutModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatListModule,
     ],
     providers: [
         SportService,

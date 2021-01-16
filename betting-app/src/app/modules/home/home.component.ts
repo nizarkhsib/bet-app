@@ -72,6 +72,16 @@ export class HomeComponent implements OnInit, AfterViewInit {
                 private headerService: HeaderService,
                 private ngxLoader: NgxUiLoaderService,
                 private router: Router) {
+
+        this.selectionService.competitionSubject.subscribe(
+            (val) => {
+                if (val.length > 0) {
+                    this.selectedCompetitions = val;
+                    this.loadMatches();
+                }
+
+            }
+        );
     }
 
     ngOnInit(): void {
@@ -86,9 +96,9 @@ export class HomeComponent implements OnInit, AfterViewInit {
         this.router.navigate(['matches', competitionId]);
     }
 
-    selectClicked(): void {
-        this.openDialog();
-    }
+    // selectClicked(): void {
+    //     this.openDialog();
+    // }
 
     getSportsList(): void {
         this.sportService.getAll().subscribe(
@@ -122,46 +132,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
         );
     }
 
-    selectionChange(event, competition: Competition): void {
-
-
-        if (event === true) {
-            const x = this.selection.find(sel => sel === competition);
-
-            if (x === undefined) {
-                this.selection.push(competition);
-                this.selectionService.addCompetition(competition);
-            }
-            console.log('selection', this.selection);
-        }
-        if (event === false) {
-
-            const index = this.selection.indexOf(competition);
-
-            if (index > -1) {
-
-                this.selection.splice(index, 1);
-                this.selectionService.removeCompetition(competition);
-            }
-        }
-        this.selectionService.getCurrentSelectedCompetitions().subscribe(
-            competitions => {
-                this.selectedCompetitions = competitions;
-                this.loadMatches();
-            }
-        );
-
-        this.selection.length === 0 ? this.ngxLoader.stop() : this.ngxLoader.start();
-
-        if (this.selection.length === 0) {
-            this.ngxLoader.stop();
-            this.loading = false;
-        } else {
-            this.ngxLoader.start();
-            this.loading = true;
-        }
-    }
-
     getCompetitionsList(event): void {
 
         this.selectionService.competitionSubject.next([]);
@@ -175,29 +145,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
         );
     }
 
-    openDialog(): void {
-        let dialogRef = this.dialog.open(CompetitionSelectionComponent, {
-            width: '500px',
-            height: '400px',
-            data: {
-                competitions: this.competitionsArray,
-                selected: this.selectedCompetitions
-            }
-        });
 
-        dialogRef.afterClosed().subscribe(result => {
-
-            this.selectedCompetitions = this.selectionService.competitionSubject.getValue();
-            dialogRef = null;
-            this.selectionService.getCurrentSelectedCompetitions().subscribe(
-                competitions => {
-                    this.selectedCompetitions = competitions;
-                    this.loadMatches();
-                }
-            );
-
-        });
-    }
 
     getTopBets(): void {
         this.loadingTop = true;
@@ -210,7 +158,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     }
 
     loadMatches(): void {
-        console.log('  this.loading', this.loading);
+
         this.ngxLoader.start();
         this.loading = true;
         this.listeParis = [];

@@ -48,3 +48,49 @@
         display: block;
     }
 }
+
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 9999 !important;
+    top: 0;
+    left: 0;
+    background-color: rgba(100, 100, 100, 0.5);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.overlay-content {
+    position: relative;
+    width: 100%;
+    text-align: center;
+}
+
+.overlay a {
+    text-decoration: none;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay a:hover,
+.overlay a:focus {
+    color: #f1f1f1;
+}
+
+.overlay .closebtn {
+    position: absolute;
+    right: 45px;
+    font-size: 40px;
+}
+
+@media screen and (max-height: 450px) {
+    .overlay a {
+        font-size: 20px
+    }
+
+    .overlay .closebtn {
+        font-size: 40px;
+    }
+}

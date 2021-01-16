@@ -11,6 +11,9 @@ import { HeaderService } from 'src/app/shared/services/header.service';
 })
 export class HeaderComponent implements OnInit {
 
+    private opened = false;
+
+
     currentUser: User = null;
     displayHeader = false;
     constructor(private authenticationService: AuthenticationService,
@@ -27,6 +30,21 @@ export class HeaderComponent implements OnInit {
             }
         );
     }
+
+    private _toggleSidebar(): void {
+        this.opened = !this.opened;
+    }
+
+    openNav(): void {
+        document.getElementById('myNav').style.width = '80%';
+        document.getElementById('topNav').style.display = 'block';
+    }
+
+    closeNav(): void {
+        document.getElementById('myNav').style.width = '0%';
+        document.getElementById('topNav').style.display = 'none';
+    }
+
     ngOnInit(): void {
     }
 

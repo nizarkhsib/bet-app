@@ -3,13 +3,9 @@
 
     <mat-toolbar-row>
 
-        <span class="competition-mobile-menu">
-            <button mat-mini-fab *ngIf="currentUser" [matMenuTriggerFor]="menuCompetition" color="basic" aria-label="Example icon button with a menu icon">
-                <i class="fa fa-futbol-o" aria-hidden="true"></i>
-            </button>
-        </span>
+
         <span class="navbar-brand">
-            <!-- <i class="fa fa-futbol-o" aria-hidden="true"></i> -->
+            <i class="fa fa-futbol-o" aria-hidden="true"></i>
             <b>BÊTE POTES</b>
         </span>
 
@@ -26,15 +22,19 @@
 
         </mat-form-field> -->
 
-        <mat-menu #menuCompetition="matMenu" class="menu">
-            <app-competition-select></app-competition-select>
-        </mat-menu>
 
         <button fxFlex fxLayoutAlign="flex-end center" *ngIf="!currentUser" mat-raised-button [routerLink]="['/login']" color="basic" aria-label="Example icon button with a menu icon">
             Login
         </button>
 
-        <button mat-mini-fab *ngIf="currentUser" [matMenuTriggerFor]="menu" color="basic" aria-label="Example icon button with a menu icon">
+        <span class="competition-mobile-menu">
+            <button mat-raised-button *ngIf="currentUser" (click)="openNav()" color="basic" style="margin-right: 10px;">
+                <i class="fa fa-futbol-o" aria-hidden="true"></i>
+                Competitions
+            </button>
+        </span>
+
+        <button mat-mini-fab *ngIf="currentUser" [matMenuTriggerFor]="menu" color="basic">
             <mat-icon>menu</mat-icon>
         </button>
 
@@ -67,6 +67,27 @@
 
             </button>
         </mat-menu>
+
+        <!-- Overlay menu -->
+        <div id="myNav" class="overlay">
+
+            <div class="overlay-content">
+                <div id="topNav" class="fixed" style="position:sticky;color:white; background-color: black;top: 0;max-width:inherit;transition: 0.5s;">
+
+                    <div class="row">
+                        <div class="col" style="margin-left:10px;">
+                            Compétitions
+                        </div>
+                        <div class="col">
+                            <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <app-main-nav></app-main-nav>
+            </div>
+        </div>
 
 
 

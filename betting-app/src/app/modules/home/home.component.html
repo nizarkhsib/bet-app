@@ -1,38 +1,18 @@
 <div class="center-header" *ngIf="competitionsArray">
 
-    <!-- <div class="spinner">
-        <mat-spinner mode="indeterminate" *ngIf="loading && selectedCompetitions.length !== 0" mode="indeterminate"></mat-spinner>
-    </div> -->
-
-    <!-- Side nav -->
     <div class="row">
         <div style="width : 250px; overflow-y: hidden;">
             <div class="side-nav ">
                 <mat-accordion>
-                    <ng-container *ngFor="let sport of sportsArray">
-                        <mat-expansion-panel expanded *ngIf="sport.name==='football'">
-                            <mat-expansion-panel-header>
-                                <mat-panel-title>
-                                    <mat-label> <b>{{sport.name | uppercase}}</b></mat-label>
-                                </mat-panel-title>
-
-                            </mat-expansion-panel-header>
-                            <ng-container *ngFor="let competition of sport.competitions">
-                                <mat-checkbox class="row" [disabled]="loading" (change)="selectionChange($event.checked, competition)" style="margin-left: 10px;">
-                                    {{competition.label}}
-                                </mat-checkbox>
-                                <hr>
-                            </ng-container>
-                        </mat-expansion-panel>
-                    </ng-container>
+                    <app-main-nav></app-main-nav>
                 </mat-accordion>
             </div>
         </div>
+
         <!-- Initial bets list -->
         <div class="bloc-offre-1x2">
 
-
-            <div class="flex-container wrap" *ngIf=" !loadingTop && selection.length=== 0">
+            <div class="flex-container wrap" *ngIf=" !loadingTop && selectedCompetitions.length === 0">
                 <br>
                 <h2 style="color:white;margin-top: 10px;">Top bets </h2>
                 <div *ngIf="selection.length == 0" class="bloc-offre-1x2">
@@ -47,8 +27,6 @@
 
         <!-- Selection bets list -->
         <div class="bloc-offre-1x2" style="margin-top: 180px;">
-            <!-- <mat-spinner *ngIf="loading"></mat-spinner> -->
-            <!-- <ngx-ui-loader *ngIf="loading"></ngx-ui-loader> -->
             <ngx-ui-loader fgsSize="75"></ngx-ui-loader>
             <div *ngIf="parisGroupedByDate.length > 0">
                 <app-matches [listeParis]="parisGroupedByDate"></app-matches>

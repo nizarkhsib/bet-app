@@ -9,29 +9,27 @@
             </div>
         </div>
 
-        <!-- Initial bets list -->
-        <div class="bloc-offre-1x2">
 
+        <div class="flex-container wrap">
             <div class="flex-container wrap" *ngIf=" !loadingTop && selectedCompetitions.length === 0">
                 <br>
-                <h2 style="color:white;margin-top: 10px;">Top bets </h2>
-                <div *ngIf="selection.length == 0" class="bloc-offre-1x2">
-
+                <!-- <h2 style="color:white;margin-top: 10px;">Top bets </h2> -->
+                <div *ngIf="selection.length == 0" class="bloc-offre-1x2-main">
+                    <h2 style="color:white;margin-top: 10px;">Top bets </h2>
                     <div *ngFor="let paris of topBets">
                         <app-team-box [paris]="paris"></app-team-box>
                     </div>
                 </div>
 
             </div>
-        </div>
 
-        <!-- Selection bets list -->
-        <div class="bloc-offre-1x2" style="margin-top: 180px;">
-            <ngx-ui-loader fgsSize="75"></ngx-ui-loader>
-            <div *ngIf="parisGroupedByDate.length > 0">
-                <app-matches [listeParis]="parisGroupedByDate"></app-matches>
+            <!-- Selection bets list -->
+            <div class="bloc-offre-1x2" style="margin-top: 50px;">
+                <ngx-ui-loader fgsSize="75"></ngx-ui-loader>
+                <div *ngIf="parisGroupedByDate.length > 0">
+                    <app-matches [listeParis]="parisGroupedByDate"></app-matches>
+                </div>
             </div>
-        </div>
 
+        </div>
     </div>
-</div>

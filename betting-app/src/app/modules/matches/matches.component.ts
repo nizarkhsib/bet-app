@@ -13,8 +13,6 @@ import { SelectionService } from 'src/app/shared/services/selection.service';
     styleUrls: ['./matches.component.scss']
 })
 export class MatchesComponent implements OnInit {
-    @ViewChild('dateHeaderFixed') dateHeaderFixed: ElementRef;
-    @ViewChild('dateHeader') dateHeader: ElementRef;
 
     @Input() listeParis: any[];
     @Input() sportId: number;
@@ -26,7 +24,7 @@ export class MatchesComponent implements OnInit {
     public sectionsIndex: any = [];
 
     constructor(private el: ElementRef,
-                private headerService: HeaderService) {
+        private headerService: HeaderService) {
     }
 
     ngOnInit(): void {
@@ -34,8 +32,6 @@ export class MatchesComponent implements OnInit {
         if (this.listeParis.length > 0) {
             // console.log('listeParis', this.listeParis);
             this.selectedParis = this.listeParis[0];
-            console.log('this.selectedParis', this.selectedParis);
-            this.headerService.currentHeaderDate.next(this.currentSectionName);
         }
     }
 

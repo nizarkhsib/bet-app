@@ -96,10 +96,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
         this.router.navigate(['matches', competitionId]);
     }
 
-    // selectClicked(): void {
-    //     this.openDialog();
-    // }
-
     getSportsList(): void {
         this.sportService.getAll().subscribe(
             result => {
@@ -115,12 +111,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
                         );
                     }
                 });
-                // console.log('this.sportsARray', this.sportsArray);
+
                 this.selectionService.sportsArray.next(this.sportsArray);
-
-                // sport + competition
-
-                // this.getCompetitionsList(this.selectedSport);
 
                 this.selectionService.getCurrentSelectedCompetitions().subscribe(
                     competitions => {

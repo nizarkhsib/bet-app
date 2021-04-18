@@ -12,7 +12,7 @@ import { HeaderService } from 'src/app/shared/services/header.service';
 export class HeaderComponent implements OnInit {
 
     private opened = false;
-
+    isOpenSearch = false;
 
     currentUser: User = null;
     displayHeader = false;
@@ -43,6 +43,14 @@ export class HeaderComponent implements OnInit {
     closeNav(): void {
         document.getElementById('myNav').style.width = '0%';
         document.getElementById('topNav').style.display = 'none';
+    }
+
+    closedSearchBox(): void {
+        this.isOpenSearch = false;
+    }
+
+    openSearch(): void {
+        this.isOpenSearch = true;
     }
 
     ngOnInit(): void {

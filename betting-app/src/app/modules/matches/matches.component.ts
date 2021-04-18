@@ -24,13 +24,12 @@ export class MatchesComponent implements OnInit {
     public sectionsIndex: any = [];
 
     constructor(private el: ElementRef,
-        private headerService: HeaderService) {
+                private headerService: HeaderService) {
     }
 
     ngOnInit(): void {
 
         if (this.listeParis.length > 0) {
-            // console.log('listeParis', this.listeParis);
             this.selectedParis = this.listeParis[0];
         }
     }

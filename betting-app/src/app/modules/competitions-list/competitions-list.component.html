@@ -8,7 +8,7 @@
 
         </mat-expansion-panel-header>
         <ng-container *ngFor="let competition of sport.competitions">
-            <mat-checkbox class="row" (change)="selectionChange($event.checked, competition)" style="margin-left: 10px;">
+            <mat-checkbox class="row" [checked]="isChecked(competition)" (change)="selectionChange($event.checked, competition)" style="margin-left: 10px;">
                 {{competition.label}}
             </mat-checkbox>
             <hr>

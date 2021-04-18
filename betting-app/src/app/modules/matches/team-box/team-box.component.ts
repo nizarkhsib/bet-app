@@ -11,9 +11,11 @@ export class TeamBoxComponent implements OnInit {
     @Output() sectionPosition = new EventEmitter();
     @Input() paris;
     currentHeaderDate = '';
-    constructor(private element: ElementRef, private headerService: HeaderService) { }
+    constructor(private element: ElementRef, private headerService: HeaderService) {
+    }
 
     ngOnInit(): void {
+
         this.headerService.currentHeaderDate.subscribe(
             value => this.currentHeaderDate = value
         );

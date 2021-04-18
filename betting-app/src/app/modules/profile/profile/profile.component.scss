@@ -1,0 +1,11 @@
+.profile-container {
+    margin-top: 100px;
+
+    .flex-grid {
+        display: flex;
+
+        .col {
+            flex: 1;
+        }
+    }
+}

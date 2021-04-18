@@ -14,7 +14,7 @@ import { ConfirmDialogComponent } from './modules/confirm-dialog/confirm-dialog.
 import { BarChartComponent } from './modules/bar-chart/bar-chart.component';
 import { MatchesComponent } from './modules/matches/matches.component';
 import { HomeComponent } from './modules/home/home.component';
-import { CompetitionSelectionComponent } from './modules/competition-selection/competition-selection.component';
+import { SelectedCompetitionsComponent } from './modules/selected-competitions/selected-competitions.component';
 import { LoginComponent } from './modules/login/login.component';
 import { RegisterComponent } from './modules/register/register.component';
 import { PanierComponent } from './modules/panier/panier.component';
@@ -24,12 +24,14 @@ import { DemoMaterialModule } from './modules/material-module';
 import { HeaderService } from './shared/services/header.service';
 import { HeaderComponent } from './modules/header/header.component';
 import { NgxUiLoaderConfig, NgxUiLoaderModule, NgxUiLoaderRouterModule, POSITION, SPINNER } from 'ngx-ui-loader';
-import { MainNavComponent } from './modules/main-nav/main-nav.component';
+import { CompetitionsListComponent } from './modules/competitions-list/competitions-list.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
+import { ProfileModule } from './modules/profile/profile.module';
+import { SearchBoxComponent } from './shared/components/search-box/search-box.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     bgsColor: 'rgba(12, 80, 219, 0.98)',
@@ -48,14 +50,15 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
         BarChartComponent,
         MatchesComponent,
         HomeComponent,
-        CompetitionSelectionComponent,
+        SelectedCompetitionsComponent,
         LoginComponent,
         RegisterComponent,
         PanierComponent,
         DateHeaderComponent,
         TeamBoxComponent,
         HeaderComponent,
-        MainNavComponent
+        CompetitionsListComponent,
+        SearchBoxComponent
     ],
     imports: [
         BrowserModule,
@@ -74,6 +77,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
         MatButtonModule,
         MatSidenavModule,
         MatListModule,
+        ProfileModule
     ],
     providers: [
         SportService,

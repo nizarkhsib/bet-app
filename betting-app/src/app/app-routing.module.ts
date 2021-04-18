@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { SelectedCompetitionsComponent } from './modules/selected-competitions/selected-competitions.component';
 import { HomeComponent } from './modules/home/home.component';
 import { LoginComponent } from './modules/login/login.component';
 import { MatchesComponent } from './modules/matches/matches.component';
@@ -12,13 +13,12 @@ const routes: Routes = [
     {
         path: '',
         component: HomeComponent,
-        // canActivate: [AuthGuard]
-        // children : [
-        //   {
-        //     path: 'matches/:competitionId', // child route path
-        //     component: MatchesComponent, // child route component that the router renders
-        //   }
-        // ]
+        children: [
+            {
+                path: 'competitions', // child route path
+                component: SelectedCompetitionsComponent, // child route component that the router renders
+            }
+        ]
     },
     {
         path: 'matches/:competitionId', // child route path
@@ -35,8 +35,14 @@ const routes: Routes = [
     },
     {
         path: 'panier',
-        component: PanierComponent
-    }
+        component: PanierComponent,
+    },
+    {
+        path: 'profile',
+        loadChildren: () => import('./modules/profile/profile.module').then(m => m.ProfileModule),
+        canActivate: [AuthGuard]
+    },
+
 ];
 
 @NgModule({

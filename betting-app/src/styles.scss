@@ -25,27 +25,3 @@ body {
     z-index: 1;
     font-style: bold;
 }
-
-.flex-container-bets {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    // border: 0px solid silver;
-    -ms-box-orient: horizontal;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -moz-flex;
-    display: -webkit-flex;
-    align-items: center;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 400px);
-    justify-content: center;
-
-    /* CSS that should be displayed if width is equal to or less than 800px goes here */
-    @media (max-width: 685px) {
-        margin-top: 205px;
-        margin-bottom: 100px
-    }
-
-}

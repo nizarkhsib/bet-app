@@ -58,7 +58,9 @@
     left: 0;
     background-color: rgba(100, 100, 100, 0.5);
     overflow-x: hidden;
-    transition: 0.5s;
+    // transition: 0.5s;
+    // transform: rotate(45deg);
+    transition: all .5s;
 }
 
 .overlay-content {

@@ -11,26 +11,25 @@
 
 
         <span class="spacer"></span>
-        <!-- <mat-form-field>
-            <div style="margin-bottom:-30px;">
-                <mat-icon style="margin-top:-2px" matPrefix></mat-icon>
-            </div>
-            <span matPrefix>
-                <mat-icon matPrefix>search</mat-icon>
-            </span>
-            <input matInput placeholder="Search a friend" type="text" />
-
-        </mat-form-field> -->
-
 
         <button fxFlex fxLayoutAlign="flex-end center" *ngIf="!currentUser" mat-raised-button [routerLink]="['/login']" color="basic" aria-label="Example icon button with a menu icon">
             Login
         </button>
 
+        <!-- Search icon -->
+        <!-- <span class="competition-mobile-menu">
+            <span mat-mini-fab *ngIf="currentUser" (click)="openSearch()" color="basic" style="margin-right: 10px;">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </span>
+        </span> -->
+
+        <div style="margin-left: 20px;">
+            <app-search-box></app-search-box>
+        </div>
+
         <span class="competition-mobile-menu">
-            <button mat-raised-button *ngIf="currentUser" (click)="openNav()" color="basic" style="margin-right: 10px;">
-                <i class="fa fa-futbol-o" aria-hidden="true"></i>
-                Competitions
+            <button mat-mini-fab *ngIf="currentUser" (click)="openNav()" color="basic" style="margin-right: 10px;">
+                <i class="fa fa-trophy fa-lg" aria-hidden="true"></i>
             </button>
         </span>
 
@@ -39,7 +38,7 @@
         </button>
 
         <mat-menu #menu="matMenu" class="menu">
-            <button mat-menu-item color="primary" color="basic">
+            <button [routerLink]="['/profile']" mat-menu-item color="primary" color="basic">
                 <mat-icon class="material-icons">
                     account_circle
                 </mat-icon>
@@ -85,7 +84,7 @@
                     </div>
                 </div>
 
-                <app-main-nav></app-main-nav>
+                <app-competitions-list></app-competitions-list>
             </div>
         </div>
 

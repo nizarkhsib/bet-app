@@ -1,35 +1,38 @@
 <div class="center-header" *ngIf="competitionsArray">
 
-    <div class="row">
-        <div style="width : 250px; overflow-y: hidden;">
-            <div class="side-nav ">
-                <mat-accordion>
-                    <app-main-nav></app-main-nav>
-                </mat-accordion>
-            </div>
+    <div style="overflow-y: hidden;">
+        <div class="side-nav ">
+            <mat-accordion>
+                <app-competitions-list></app-competitions-list>
+            </mat-accordion>
         </div>
 
+        <router-outlet></router-outlet>
 
-        <div class="flex-container wrap">
-            <div class="flex-container wrap" *ngIf=" !loadingTop && selectedCompetitions.length === 0">
-                <br>
-                <!-- <h2 style="color:white;margin-top: 10px;">Top bets </h2> -->
-                <div *ngIf="selection.length == 0" class="bloc-offre-1x2-main">
-                    <h2 style="color:white;margin-top: 10px;">Top bets </h2>
-                    <div *ngFor="let paris of topBets">
-                        <app-team-box [paris]="paris"></app-team-box>
+    </div>
+
+
+    <div class="flex-container wrap">
+
+        <div class="flex-container wrap" *ngIf=" !loadingTop && selectedCompetitions.length === 0">
+            <br>
+            <div *ngIf="selection.length == 0" class="bloc-offre-1x2-main">
+                <h2 style="">Top bets </h2>
+                <div *ngFor="let paris of topBets">
+                    <app-team-box [paris]="paris"></app-team-box>
+                </div>
+            </div>
+        </div>
+        <!-- Selection bets list -->
+        <!-- 
+            <ng-container *ngIf="parisGroupedByDate.length > 0">
+                <div class="bloc-offre-1x2" style="margin-top: 50px;">
+                    <ngx-ui-loader fgsSize="75"></ngx-ui-loader>
+                    <div>
+                        <app-matches [listeParis]="parisGroupedByDate"></app-matches>
                     </div>
                 </div>
-
-            </div>
-
-            <!-- Selection bets list -->
-            <div class="bloc-offre-1x2" style="margin-top: 50px;">
-                <ngx-ui-loader fgsSize="75"></ngx-ui-loader>
-                <div *ngIf="parisGroupedByDate.length > 0">
-                    <app-matches [listeParis]="parisGroupedByDate"></app-matches>
-                </div>
-            </div>
-
-        </div>
+            </ng-container> 
+            -->
+        <router-outlet></router-outlet>
     </div>

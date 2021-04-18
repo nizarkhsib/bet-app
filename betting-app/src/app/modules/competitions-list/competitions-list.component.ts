@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
 import { SportService } from 'src/app/shared/services/sport.service';
 import { CompetitionsService } from 'src/app/shared/services/competitions.service';
 import { Competition } from 'src/app/models/competition.model';
@@ -9,48 +6,55 @@ import { SelectionService } from 'src/app/shared/services/selection.service';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/shared/services/authentication.service';
-import { User } from 'src/app/shared/models/user';
 
 @Component({
-    selector: 'app-main-nav',
-    templateUrl: './main-nav.component.html',
-    styleUrls: ['./main-nav.component.scss']
+    selector: 'app-competitions-list',
+    templateUrl: './competitions-list.component.html',
+    styleUrls: ['./competitions-list.component.scss']
 })
-export class MainNavComponent {
+export class CompetitionsListComponent {
 
     sportsArray: any[] = [];
     selectedCompetitions: Competition[] = [];
     selection: Competition[] = [];
     loading = false;
-    currentUser: User = null;
-    isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
-        .pipe(
-            map(result => result.matches),
-            shareReplay()
-        );
 
-    constructor(private breakpointObserver: BreakpointObserver,
-                private sportService: SportService,
-                private selectionService: SelectionService,
-                private competitionService: CompetitionsService,
-                private ngxLoader: NgxUiLoaderService,
-                private authenticationService: AuthenticationService,
-                private router: Router) {
-        this.authenticationService.currentUser.subscribe(
-            (current) => {
-                this.currentUser = current;
+    constructor(
+        private sportService: SportService,
+        private selectionService: SelectionService,
+        private competitionService: CompetitionsService,
+        private ngxLoader: NgxUiLoaderService,
+        private authenticationService: AuthenticationService,
+        private router: Router) {
+
+        console.log(this.router.url);
+
+        this.selectionService.competitionSubject.subscribe(
+            (val) => {
+                this.selectedCompetitions = val;
             }
         );
+
         this.getSportsList();
 
+    }
+
+    isChecked(competition: Competition): boolean {
+
+        const x = this.selectedCompetitions.find(sel => sel === competition);
+
+        if (x === undefined) {
+            return false;
+        }
+
+        return true;
     }
 
     getSportsList(): void {
         this.sportService.getAll().subscribe(
             result => {
-
                 result.forEach(sport => {
-                    if (sport.hasBet) {
+                    if (sport.hasBet && sport.id !== undefined) {
 
                         this.competitionService.getAll(sport.id).subscribe(
                             (competitions: Competition[]) => {
@@ -74,6 +78,7 @@ export class MainNavComponent {
     }
 
 
+
     selectionChange(event, competition: Competition): void {
 
 
@@ -85,6 +90,7 @@ export class MainNavComponent {
                 this.selectionService.addCompetition(competition);
             }
         }
+
         if (event === false) {
 
             const index = this.selection.indexOf(competition);
@@ -98,6 +104,10 @@ export class MainNavComponent {
 
         this.selection.length === 0 ? this.ngxLoader.stop() : this.ngxLoader.start();
 
+        this.handleLoader();
+    }
+
+    handleLoader() {
         if (this.selection.length === 0) {
             this.ngxLoader.stop();
             this.loading = false;
@@ -109,10 +119,6 @@ export class MainNavComponent {
 
     logout(): void {
         this.authenticationService.logout();
-    }
-
-    navigateToFriends(): void {
-        this.router.navigate(['/login']);
     }
 
 }

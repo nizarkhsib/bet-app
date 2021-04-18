@@ -1,0 +1,121 @@
+.add-form {
+    text-align: left;
+
+}
+
+h1 {
+    text-align: center;
+    position: sticky;
+}
+
+mat-label {
+    color: white;
+}
+
+mat-form-field {
+    padding: 5px;
+}
+
+mat-hint {
+    color: red;
+}
+
+mat-button {
+    margin-bottom: 20px;
+}
+
+.mat-dialog-content {
+    max-height: 200px;
+    // background-color: rgb(248, 248, 248);
+}
+
+.mat-dialog-actions {
+    padding: 8px 0;
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 52px;
+    align-items: center;
+    margin-bottom: 0px;
+}
+
+.wrap {
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.validate-btn {
+    // display: inline-block;
+    width: 100%; //   float: right;
+    float: right;
+}
+
+
+.content ul {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+}
+
+.content ul li {
+    list-style: none;
+    flex: 0 0 100%;
+    font-size: 20px;
+}
+
+.header ul {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+}
+
+.header ul li {
+    list-style: none;
+    flex: 0 0 50%;
+}
+
+.validate-btn {
+    margin-top: 40px;
+    float: right;
+    // width: 100px;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-ripple .mat-ripple-element {
+    opacity: 0.03 !important;
+    background-color: #005691 !important;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color: #005691;
+}
+
+
+
+.side-nav {
+    position: fixed;
+    width: 360px;
+    height: 100vh;
+    left: 0;
+    right: 0;
+    overflow-y: scroll;
+    top: 60px;
+    padding: 20px;
+    background-color: black;
+
+    /* CSS that should be displayed if width is equal to or less than 800px goes here */
+    @media (max-width: 800px) {
+        display: none;
+    }
+}
+
+.bloc-offre-1x2 {
+    // margin-top: 55px;
+    // margin-left: 360px;
+    width: 100%;
+    margin-left: 350px;
+
+    /* CSS that should be displayed if width is equal to or less than 800px goes here */
+    @media (max-width: 800px) {
+        margin-left: 0px;
+    }
+}

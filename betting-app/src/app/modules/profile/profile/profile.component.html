@@ -1,0 +1,72 @@
+<div class="profile-container">
+    <mat-tab-group>
+        <mat-tab label="My Friends">
+            <ng-template mat-tab-label>
+                <span class="material-icons">
+                    supervised_user_circle
+                </span>
+                Friends
+
+            </ng-template>
+
+            <ng-template matTabContent>
+                <app-friends></app-friends>
+            </ng-template>
+
+        </mat-tab>
+
+        <mat-tab label="Active Bets">
+
+            <ng-template mat-tab-label>
+                <span class="material-icons">
+                    emoji_events
+                </span>Bets
+            </ng-template>
+
+            <mat-tab-group class="flex-grid">
+                <mat-tab class="col" label="Active Bets">
+
+                    <ng-template mat-tab-label>
+                        <span class="material-icons">
+                            access_time
+                        </span>Requests
+                    </ng-template>
+                </mat-tab>
+                <mat-tab class="col" label="Active Bets">
+
+                    <ng-template mat-tab-label>
+                        <span class="material-icons">
+                            access_time
+                        </span>Active
+                    </ng-template>
+                </mat-tab>
+
+                <mat-tab class="col" label="My Friends">
+                    <ng-template mat-tab-label>
+                        <span class="material-icons">
+                            history
+                        </span>History
+                    </ng-template>
+                </mat-tab>
+            </mat-tab-group>
+        </mat-tab>
+
+        <!-- 
+        <mat-tab label="Active Bets">
+
+            <ng-template mat-tab-label>
+                <span class="material-icons">
+                    access_time
+                </span>Active Bets
+            </ng-template>
+        </mat-tab>
+
+        <mat-tab label="My Friends">
+            <ng-template mat-tab-label>
+                <span class="material-icons">
+                    history
+                </span>Bets History
+            </ng-template>
+        </mat-tab> -->
+    </mat-tab-group>
+</div>

@@ -28,7 +28,6 @@ export class MatchesComponent implements OnInit {
     }
 
     ngOnInit(): void {
-
         if (this.listeParis.length > 0) {
             this.selectedParis = this.listeParis[0];
         }

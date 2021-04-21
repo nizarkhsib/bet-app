@@ -18,16 +18,13 @@ export class CompetitionsListComponent {
     selectedCompetitions: Competition[] = [];
     selection: Competition[] = [];
     loading = false;
-
+    loaded = false;
     constructor(
         private sportService: SportService,
         private selectionService: SelectionService,
         private competitionService: CompetitionsService,
         private ngxLoader: NgxUiLoaderService,
-        private authenticationService: AuthenticationService,
-        private router: Router) {
-
-        console.log(this.router.url);
+        private authenticationService: AuthenticationService) {
 
         this.selectionService.competitionSubject.subscribe(
             (val) => {
@@ -41,7 +38,7 @@ export class CompetitionsListComponent {
 
     isChecked(competition: Competition): boolean {
 
-        const x = this.selectedCompetitions.find(sel => sel === competition);
+        const x = this.selectedCompetitions.find(sel => sel.id === competition.id);
 
         if (x === undefined) {
             return false;
@@ -77,10 +74,7 @@ export class CompetitionsListComponent {
         );
     }
 
-
-
     selectionChange(event, competition: Competition): void {
-
 
         if (event === true) {
             const x = this.selection.find(sel => sel === competition);

@@ -80,9 +80,12 @@ export class SelectedCompetitionsComponent implements OnInit, OnDestroy {
                 paris => {
                     this.listeParis = paris;
                     this.listeParis.sort((a, b) => new Date(a.end).getTime() - new Date(b.end).getTime());
+                    const filtered = this.listeParis.filter((s) => {
+                        return s.marketType === String('1/N/2');
+                    });
 
                     const groupedByDate = from(
-                        this.listeParis
+                        filtered
                     )
                         .pipe(
                             groupBy(p => p.end.slice(0, 10), p => p),

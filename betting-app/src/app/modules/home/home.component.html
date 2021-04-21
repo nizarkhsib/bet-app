@@ -6,11 +6,7 @@
                 <app-competitions-list></app-competitions-list>
             </mat-accordion>
         </div>
-
-        <router-outlet></router-outlet>
-
     </div>
-
 
     <div class="flex-container wrap">
 
@@ -23,16 +19,6 @@
                 </div>
             </div>
         </div>
-        <!-- Selection bets list -->
-        <!-- 
-            <ng-container *ngIf="parisGroupedByDate.length > 0">
-                <div class="bloc-offre-1x2" style="margin-top: 50px;">
-                    <ngx-ui-loader fgsSize="75"></ngx-ui-loader>
-                    <div>
-                        <app-matches [listeParis]="parisGroupedByDate"></app-matches>
-                    </div>
-                </div>
-            </ng-container> 
-            -->
+
         <router-outlet></router-outlet>
     </div>

@@ -9,16 +9,13 @@
     </div>
 
     <div class="flex-container wrap">
-
         <div class="flex-container wrap" *ngIf=" !loadingTop && selectedCompetitions.length === 0">
             <br>
             <div *ngIf="selection.length == 0" class="bloc-offre-1x2-main">
-                <h2 style="">Top bets </h2>
                 <div *ngFor="let paris of topBets">
                     <app-team-box [paris]="paris"></app-team-box>
                 </div>
             </div>
         </div>
-
         <router-outlet></router-outlet>
     </div>

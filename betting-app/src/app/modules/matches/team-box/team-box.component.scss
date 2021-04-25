@@ -13,7 +13,7 @@
     padding: 5px;
     width: 80%;
     margin-bottom: 20px;
-    margin-top: 60px;
+    margin-top: 20px;
     border-radius: 0.3em;
     border-width: 1px;
     font-size: 3.2em;
@@ -52,7 +52,7 @@
             background: black;
             padding: 5px;
             width: 100%;
-            margin: -5px;
+            margin: 5px;
             line-height: 20px;
             color: white;
             font-weight: bold;
@@ -78,10 +78,16 @@
         }
 
         .choice-1n2-container:hover {
-            background-color: white;
+            background-color: dodgerblue;
             color: black;
             cursor: grab;
         }
+
+        .choice-1n2-clicked {
+            background-color: dodgerblue;
+            color: black;
+        }
+
 
     }
 

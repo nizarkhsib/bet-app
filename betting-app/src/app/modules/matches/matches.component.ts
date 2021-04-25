@@ -1,11 +1,8 @@
-import { Component, ElementRef, HostListener, Input, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, ElementRef, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { Choice1x2 } from 'src/app/shared/models/choice1x2';
-import { HeaderService } from 'src/app/shared/services/header.service';
-import { MatchesService } from 'src/app/shared/services/matches.services';
-import { SelectionService } from 'src/app/shared/services/selection.service';
+import { HeaderService } from 'src/app/shared/services/ui/header.service';
 
 @Component({
     selector: 'app-matches',

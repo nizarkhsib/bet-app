@@ -6,7 +6,7 @@ import { Competition } from 'src/app/models/competition.model';
 @Injectable({
     providedIn: 'root'
 })
-export class SelectionService {
+export class SelectedCompetitionsService {
 
     competitionSubject = new BehaviorSubject<Competition[]>([]);
     sportsArray = new BehaviorSubject<any[]>([]);

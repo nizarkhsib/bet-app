@@ -18,10 +18,9 @@
     <mat-card style="background-color: black;min-height: 100vh;  margin-top:20px; transition: 0.5s;">
         <div class="flex-container-bets">
 
-            <ng-container *ngFor="let paris of selectedParis.liste">
-                <app-team-box [paris]="paris">
-                </app-team-box>
-            </ng-container>
+            <div *ngFor="let paris of selectedParis.liste">
+                <app-team-box [paris]="paris"></app-team-box>
+            </div>
 
         </div>
     </mat-card>

@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
-import { SportService } from 'src/app/shared/services/sport.service';
-import { CompetitionsService } from 'src/app/shared/services/competitions.service';
+import { SportService } from 'src/app/shared/services/api/sport.service';
+import { CompetitionsService } from 'src/app/shared/services/api/competitions.service';
 import { Competition } from 'src/app/models/competition.model';
-import { SelectionService } from 'src/app/shared/services/selection.service';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
-import { Router } from '@angular/router';
-import { AuthenticationService } from 'src/app/shared/services/authentication.service';
+import { AuthenticationService } from 'src/app/shared/services/api/authentication.service';
+import { SelectedCompetitionsService } from 'src/app/shared/services/ui/selected-competitions.service';
 
 @Component({
     selector: 'app-competitions-list',
@@ -21,7 +20,7 @@ export class CompetitionsListComponent {
     loaded = false;
     constructor(
         private sportService: SportService,
-        private selectionService: SelectionService,
+        private selectionService: SelectedCompetitionsService,
         private competitionService: CompetitionsService,
         private ngxLoader: NgxUiLoaderService,
         private authenticationService: AuthenticationService) {

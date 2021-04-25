@@ -169,10 +169,10 @@
     grid-template-columns: repeat(auto-fill, 400px);
     // justify-content: center;
     width: 100vw;
+    margin-top: 20px;
 
     /* CSS that should be displayed if width is equal to or less than 800px goes here */
     @media (max-width: 685px) {
-        margin-top: 205px;
         margin-bottom: 100px
     }
 

@@ -4,12 +4,12 @@ import { FormBuilder } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Competition } from 'src/app/models/competition.model';
 import { Router } from '@angular/router';
-import { CompetitionsService } from 'src/app/shared/services/competitions.service';
-import { MatchesService } from 'src/app/shared/services/matches.services';
-import { SportService } from 'src/app/shared/services/sport.service';
-import { SelectionService } from 'src/app/shared/services/selection.service';
-import { HeaderService } from 'src/app/shared/services/header.service';
+import { CompetitionsService } from 'src/app/shared/services/api/competitions.service';
+import { MatchesService } from 'src/app/shared/services/api/matches.services';
+import { SportService } from 'src/app/shared/services/api/sport.service';
+import { HeaderService } from 'src/app/shared/services/ui/header.service';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
+import { SelectedCompetitionsService } from 'src/app/shared/services/ui/selected-competitions.service';
 
 @Component({
     selector: 'app-home',
@@ -38,7 +38,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
                 private competitionService: CompetitionsService,
                 private matchesService: MatchesService,
                 private sportService: SportService,
-                private selectionService: SelectionService,
+                private selectionService: SelectedCompetitionsService,
                 private headerService: HeaderService,
                 private ngxLoader: NgxUiLoaderService,
                 private router: Router) {

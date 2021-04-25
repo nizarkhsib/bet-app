@@ -33,6 +33,11 @@
             </button>
         </span>
 
+        <button color="basic" style="margin-right: 10px;" matBadge="8" matBadgePosition="before" matBadgeColor="accent">
+            <i class="fa fa-qrcode fa-lg"></i>
+            <!-- fa-qrcode -->
+        </button>
+
         <button mat-mini-fab *ngIf="currentUser" [matMenuTriggerFor]="menu" color="basic">
             <mat-icon>menu</mat-icon>
         </button>
@@ -66,6 +71,7 @@
 
             </button>
         </mat-menu>
+
 
         <!-- Overlay menu -->
         <div id="myNav" class="overlay">

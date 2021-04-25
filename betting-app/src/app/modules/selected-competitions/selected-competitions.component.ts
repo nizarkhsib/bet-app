@@ -1,16 +1,12 @@
-import { Component, OnInit, Inject, Optional, ChangeDetectionStrategy, OnDestroy, Input, ViewChild } from '@angular/core';
-import { UserForm } from 'src/app/forms/user.form';
-import { FormBuilder } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, OnInit, ChangeDetectionStrategy, OnDestroy, Input, ViewChild } from '@angular/core';
 import { Competition } from 'src/app/models/competition.model';
-import { UsersService } from 'src/app/shared/services/users.service';
-import { SelectionService } from 'src/app/shared/services/selection.service';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
-import { MatchesService } from 'src/app/shared/services/matches.services';
+import { MatchesService } from 'src/app/shared/services/api/matches.services';
 import { from } from 'rxjs';
 import { groupBy, map, mergeMap, reduce } from 'rxjs/operators';
 import { CompetitionsListComponent } from '../competitions-list/competitions-list.component';
+import { SelectedCompetitionsService } from 'src/app/shared/services/ui/selected-competitions.service';
 
 @Component({
     selector: 'app-selected-competitions',
@@ -32,7 +28,7 @@ export class SelectedCompetitionsComponent implements OnInit, OnDestroy {
     constructor(private ngxLoader: NgxUiLoaderService,
                 private router: Router,
                 private matchesService: MatchesService,
-                private selectionService: SelectionService,
+                private selectionService: SelectedCompetitionsService,
     ) {
 
     }

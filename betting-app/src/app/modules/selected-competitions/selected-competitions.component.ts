@@ -35,10 +35,10 @@ export class SelectedCompetitionsComponent implements OnInit, OnDestroy {
 
     ngOnInit(): void {
         this.getCompetitionsWithMatches();
-        this.listeToRouterChange();
+        this.listenToRouterChange();
     }
 
-    listeToRouterChange() {
+    listenToRouterChange() {
         this.router.events.subscribe((val) => {
             // see also
             if (val instanceof NavigationEnd && val.url === '/') {
@@ -72,6 +72,7 @@ export class SelectedCompetitionsComponent implements OnInit, OnDestroy {
         });
 
         if (competitionIds.length > 0) {
+            console.log('competitionIds', competitionIds);
             this.matchesService.getAllMatchesByCompetitionIds(competitionIds, this.selectedSport).subscribe(
                 paris => {
                     this.listeParis = paris;

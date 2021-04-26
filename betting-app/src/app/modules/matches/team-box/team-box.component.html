@@ -1,6 +1,9 @@
 <li class="teams-item" *ngIf="loaded">
     <mat-card style="transition: 0.8s;">
         <div class="row text-sm" style="font-size: 22px; margin-left: -6px;">
+            <ng-container *ngIf="getFlagUrl(paris.competition)">
+                <img src="{{getFlagUrl(paris.competition)}}" alt="Girl in a jacket" class="flag">
+            </ng-container>
             {{paris.competition}}
         </div>
 

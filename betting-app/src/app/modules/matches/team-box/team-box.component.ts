@@ -1,7 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
 import { take } from 'rxjs/operators';
 import { SelectedBetsService } from 'src/app/shared/services/ui/selected-bets.service';
+import { countries } from 'country-flags-svg';
+import { CountryFlagUrlService } from 'src/app/shared/services/ui/country-flag-url.service';
 
 @Component({
     selector: 'app-team-box',
@@ -15,13 +16,17 @@ export class TeamBoxComponent implements OnInit {
     currentHeaderDate = '';
     selectedOutcomes: any[] = [];
     loaded = false;
-    constructor(private selectedBetsService: SelectedBetsService) {
+
+    constructor(private selectedBetsService: SelectedBetsService,
+                private countryFlagUrlService: CountryFlagUrlService) {
+        this.setSelectedOutcomes();
+    }
+
+    setSelectedOutcomes() {
         this.selectedBetsService.selectedOutcomes$.pipe(
             take(1)
         ).subscribe(
             selected => {
-                console.log('selected', selected);
-                // this.selectedOutcomes = selected.map(s => s.selectedOutcome);
                 this.selectedOutcomes = selected;
                 this.loaded = true;
             }
@@ -32,9 +37,19 @@ export class TeamBoxComponent implements OnInit {
 
     }
 
+    getFlagUrl(competition: string): string {
+
+        const CountryData = this.countryFlagUrlService.getFlagUrlByCompetitionName(competition);
+
+        if (CountryData !== undefined) {
+            return CountryData.flag;
+        }
+
+        return '';
+    }
+
     isClicked(fulLbet, outcome): boolean {
-        console.log('clicked ');
-        return this.selectedOutcomes.find(s => s.bet === fulLbet && s.selectedOutcome === outcome) !== undefined;
+        return this.selectedOutcomes.find(s => s.bet.eventId === fulLbet.eventId && s.selectedOutcome.pos === outcome.pos) !== undefined;
     }
 
     outCome1Clicked(bet, outcome): void {

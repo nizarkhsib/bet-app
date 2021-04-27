@@ -38,7 +38,7 @@
             border-radius: 0.3em;
             border-width: 1px;
             line-height: 47px;
-            font-size: 3.2em;
+            font-size: 12px;
             text-align: left;
             font-family: Roboto, Arial, sans-serif;
 
@@ -72,7 +72,7 @@
                     line-height: 20px;
                     color: white;
                     font-weight: bold;
-                    font-size: 0.5em;
+                    font-size: 12px;
                     text-align: left;
                     border: 1px solid silver;
                     display: grid;
@@ -166,7 +166,7 @@
     display: -webkit-flex;
     align-items: center;
     display: grid;
-    grid-template-columns: repeat(auto-fill, 400px);
+    // grid-template-columns: repeat(auto-fill, 400px);
     // justify-content: center;
     width: 100vw;
     margin-top: 20px;

@@ -15,7 +15,7 @@ import { BarChartComponent } from './modules/bar-chart/bar-chart.component';
 import { MatchesComponent } from './modules/matches/matches.component';
 import { HomeComponent } from './modules/home/home.component';
 import { SelectedCompetitionsComponent } from './modules/selected-competitions/selected-competitions.component';
-import { RegisterComponent } from './modules/user/register/register.component';
+import { RegisterComponent } from './modules/register/register.component';
 import { PanierComponent } from './modules/panier/panier.component';
 import { TeamBoxComponent } from './modules/matches/team-box/team-box.component';
 import { DemoMaterialModule } from './modules/material-module';
@@ -32,8 +32,8 @@ import { ProfileModule } from './modules/profile/profile.module';
 import { SearchBoxComponent } from './shared/components/search-box/search-box.component';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
-import { LoginComponent } from './modules/user/login/login.component';
 import { SelectedBetsService } from './shared/services/ui/selected-bets.service';
+import { LoginComponent } from './modules/login/login.component';
 
 registerLocaleData(localeFr, 'fr');
 

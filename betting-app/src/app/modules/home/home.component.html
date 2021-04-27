@@ -9,7 +9,7 @@
     </div>
 
     <div class="flex-container wrap">
-        <div class="flex-container wrap" *ngIf=" !loadingTop && selectedCompetitions.length === 0">
+        <div class="flex-container wrap" style="background-color: black;" *ngIf=" !loadingTop && selectedCompetitions.length === 0">
             <br>
             <div *ngIf="selection.length == 0" class="bloc-offre-1x2-main">
                 <div *ngFor="let paris of topBets">

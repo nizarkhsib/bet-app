@@ -1,69 +1,85 @@
 <li class="teams-item" *ngIf="loaded">
-    <mat-card style="transition: 0.8s;">
+    <div class="container" style="transition: 0.8s; background-color: white; border-radius: 10px;">
         <div class="row text-sm" style="font-size: 22px; margin-left: -6px;">
-            <ng-container *ngIf="getFlagUrl(paris.competition)">
-                <img src="{{getFlagUrl(paris.competition)}}" alt="Girl in a jacket" class="flag">
-            </ng-container>
-            {{paris.competition}}
+
+            <div class="col">
+                <div class="row">
+                    <ng-container *ngIf="getFlagUrl(paris.competition)">
+                        <img src="{{getFlagUrl(paris.competition)}}" class="flag">
+                    </ng-container>
+                    {{paris.competition}}
+                </div>
+
+                <div class="row">
+                    <div style="font-size: 14px;">
+                        <div style="margin-right:10px;" class="fa fa-futbol-o"></div>
+                        <b>{{paris.label}}</b>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col " style="font-size : 12px ;background-color: white; border: 0px; color:black;">
+                        <mat-label>{{paris.end | date}} {{paris.end | date:'shortTime'}}</mat-label>
+                    </div>
+                </div>
+            </div>
+
+            <div style="min-width: 100%">
+                <ul class="flex-1x2-container nowrap">
+
+                    <li class="choice-1n2-container" [class.choice-1n2-clicked]="isClicked(paris,paris.outcomes[0])" (click)="outCome1Clicked(paris,paris.outcomes[0])">
+                        <div class="box-1x2">
+                            1
+                        </div>
+                        <div class="box-1x2-cote">
+                            {{paris.outcomes[0].cote}}
+                        </div>
+                    </li>
+
+                    <li class="choice-1n2-container" [class.choice-1n2-clicked]="isClicked(paris,paris.outcomes[1])" (click)="outComeXClicked(paris,paris.outcomes[1])">
+                        <div class="box-1x2">
+                            X
+                        </div>
+                        <div class="box-1x2-cote">
+                            {{paris.outcomes[1].cote}}
+                        </div>
+                    </li>
+
+                    <li class="choice-1n2-container" [class.choice-1n2-clicked]="isClicked(paris,paris.outcomes[2])" (click)="outCome2Clicked(paris,paris.outcomes[2])">
+                        <div class="box-1x2">
+                            2
+                        </div>
+                        <div class="box-1x2-cote">
+                            {{paris.outcomes[2].cote}}
+                        </div>
+
+                    </li>
+
+                </ul>
+
+                <!-- <ul class="flex-1x2-container nowrap" style="margin-top: 10px;">
+                    <div class="row">
+                        <li class="col" style="font-size : 12px ;background-color: white; border: 0px; color:black;">
+                            <mat-label>{{paris.end | date}} {{paris.end | date:'shortTime'}}</mat-label>
+                        </li>
+                        <li class="col" style="background-color: white; border: 0px; color:black; margin-left: 50px;text-align: right;">
+                            <button mat-mini-fab class="add-btn" mat-raised-button color="primary" style="margin-left: 50px;">
+                                <mat-icon matSuffix>add</mat-icon>
+                            </button>
+                        </li>
+                    </div>
+                </ul> -->
+
+            </div>
+
         </div>
 
-        <mat-card-header style="margin-left: -20px;">
 
-            <mat-card-title style="font-size: 14px;">
-                <div style="margin-right:10px;" class="fa fa-futbol-o"></div>
-                <b>{{paris.label}}</b>
-            </mat-card-title>
-        </mat-card-header>
 
         <mat-card-content>
 
-            <ul class="flex-1x2-container nowrap">
-
-                <li class="choice-1n2-container" [class.choice-1n2-clicked]="isClicked(paris,paris.outcomes[0])" (click)="outCome1Clicked(paris,paris.outcomes[0])">
-                    <div class="box-1x2">
-                        1
-                    </div>
-                    <div class="box-1x2-cote">
-                        {{paris.outcomes[0].cote}}
-                    </div>
-                </li>
-
-                <li class="choice-1n2-container" [class.choice-1n2-clicked]="isClicked(paris,paris.outcomes[1])" (click)="outComeXClicked(paris,paris.outcomes[1])">
-                    <div class="box-1x2">
-                        X
-                    </div>
-                    <div class="box-1x2-cote">
-                        {{paris.outcomes[1].cote}}
-                    </div>
-                </li>
-
-                <li class="choice-1n2-container" [class.choice-1n2-clicked]="isClicked(paris,paris.outcomes[2])" (click)="outCome2Clicked(paris,paris.outcomes[2])">
-                    <div class="box-1x2">
-                        2
-                    </div>
-                    <div class="box-1x2-cote">
-
-                    </div>
-                    {{paris.outcomes[2].cote}}
-                </li>
-
-            </ul>
-
-            <ul class="flex-1x2-container nowrap" style="margin-top: 10px;">
-                <div class="row">
-                    <li class="col" style="font-size : 12px ;background-color: white; border: 0px; color:black;">
-                        <mat-label>{{paris.end | date}} {{paris.end | date:'shortTime'}}</mat-label>
-                    </li>
-                    <!-- <li class="col" style="background-color: white; border: 0px; color:black; margin-left: 50px;text-align: right;">
-                        <button mat-mini-fab class="add-btn" mat-raised-button color="primary" style="margin-left: 50px;">
-                            <mat-icon matSuffix>add</mat-icon>
-                        </button>
-                    </li> -->
-                </div>
-            </ul>
 
 
         </mat-card-content>
 
-    </mat-card>
+    </div>
 </li>

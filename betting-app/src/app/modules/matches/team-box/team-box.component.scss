@@ -9,6 +9,10 @@
     font-style: bold;
 }
 
+.flex-basis-1 {
+    flex-basis: 1;
+}
+
 .teams-item {
     padding: 5px;
     width: 80%;
@@ -16,7 +20,7 @@
     margin-top: 20px;
     border-radius: 0.3em;
     border-width: 1px;
-    font-size: 3.2em;
+    font-size: 12px;
     text-align: left;
     font-family: Roboto, Arial, sans-serif;
     transition: 0.5s;
@@ -63,7 +67,7 @@
             line-height: 20px;
             color: white;
             font-weight: bold;
-            font-size: 0.5em;
+            font-size: 14px;
             text-align: left;
             border: 1px solid silver;
             display: grid;
@@ -84,9 +88,9 @@
 
         }
 
-        .choice-1n2-container:hover {
-            background-color: dodgerblue;
-            color: black;
+        .choice-1n2-container {
+            // background-color: dodgerblue;
+            // color: black;
             cursor: grab;
         }
 

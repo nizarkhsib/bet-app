@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { take } from 'rxjs/operators';
+import { delay, take } from 'rxjs/operators';
 import { SelectedBetsService } from 'src/app/shared/services/ui/selected-bets.service';
 import { countries } from 'country-flags-svg';
 import { CountryFlagUrlService } from 'src/app/shared/services/ui/country-flag-url.service';
@@ -49,6 +49,9 @@ export class TeamBoxComponent implements OnInit {
     }
 
     isClicked(fulLbet, outcome): boolean {
+        window.setTimeout(() => {
+            // do something
+        }, 500);
         return this.selectedOutcomes.find(s => s.bet.eventId === fulLbet.eventId && s.selectedOutcome.pos === outcome.pos) !== undefined;
     }
 

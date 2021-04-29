@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from 'src/app/shared/models/user';
 import { AuthenticationService } from 'src/app/shared/services/api/authentication.service';
@@ -11,11 +11,11 @@ import { HeaderService } from 'src/app/shared/services/ui/header.service';
 })
 export class HeaderComponent implements OnInit {
 
-    private opened = false;
+    opened = false;
     isOpenSearch = false;
-
     currentUser: User = null;
     displayHeader = false;
+    navBtnClicked = false;
     constructor(private authenticationService: AuthenticationService,
                 private headerService: HeaderService,
                 private router: Router) {
@@ -29,20 +29,36 @@ export class HeaderComponent implements OnInit {
                 this.currentUser = current;
             }
         );
+
     }
 
-    private _toggleSidebar(): void {
-        this.opened = !this.opened;
+    @HostListener('document:click', ['$event'])
+    clickout(event) {
+        if (!document.getElementById('myNav').contains(event.target)) {
+            // if side nav is opened
+            if (this.opened) {
+                this.closeNav();
+                this.opened = !this.opened;
+            }
+        }
     }
 
     openNav(): void {
-        document.getElementById('myNav').style.width = '80%';
+        document.getElementById('myNav').style.width = '60%';
         document.getElementById('topNav').style.display = 'block';
+
+
+        document.getElementById('myNavBg').style.width = '100%';
+        // document.getElementById('topNav').style.display = 'block';
+        setTimeout(() => {
+            this.opened = true;
+        }, 100);
     }
 
     closeNav(): void {
         document.getElementById('myNav').style.width = '0%';
         document.getElementById('topNav').style.display = 'none';
+        document.getElementById('myNavBg').style.width = '0%';
     }
 
     closedSearchBox(): void {
@@ -63,5 +79,4 @@ export class HeaderComponent implements OnInit {
     navigateToFriends(): void {
         this.router.navigate(['/login']);
     }
-
 }

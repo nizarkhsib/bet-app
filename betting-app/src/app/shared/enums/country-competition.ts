@@ -6,7 +6,7 @@ export class ECountryCompetition {
     };
 
     static readonly L2_BKT: CountryCompetition = {
-        competition: 'L1 Uber Eats',
+        competition: 'Ligue 2 BKT',
         countryName: 'France'
     };
 
@@ -28,6 +28,11 @@ export class ECountryCompetition {
     static readonly LIGA_NOS: CountryCompetition = {
         competition: 'Liga NOS',
         countryName: 'Portugal'
+    };
+
+    static readonly BUNDESLIGA_1: CountryCompetition = {
+        competition: 'Bundesliga 1',
+        countryName: 'Germany'
     };
 
 }

@@ -47,11 +47,13 @@ export class CompetitionsListComponent {
     }
 
     getSportsList(): void {
+        // get all sports
         this.sportService.getAll().subscribe(
             result => {
                 result.forEach(sport => {
+                    console.log('sport.id === undefined', sport.id === undefined);
                     if (sport.hasBet && sport.id !== undefined) {
-
+                        // get all sport competitions
                         this.competitionService.getAll(sport.id).subscribe(
                             (competitions: Competition[]) => {
                                 sport.competitions = competitions;

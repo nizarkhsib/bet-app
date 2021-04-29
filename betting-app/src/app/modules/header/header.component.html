@@ -1,14 +1,11 @@
 <mat-toolbar style="position: fixed; z-index: 1000; background-color: yellowgreen; top:0;">
 
-
     <mat-toolbar-row>
-
 
         <span class="navbar-brand">
             <i class="fa fa-futbol-o" aria-hidden="true"></i>
             <b>BÊTE POTES</b>
         </span>
-
 
         <span class="spacer"></span>
 
@@ -71,20 +68,20 @@
             </button>
         </mat-menu>
 
-
-        <!-- Overlay menu -->
+        <!-- Side menu menu -->
+        <!-- @TODO put in component -->
         <div id="myNav" class="overlay">
 
             <div class="overlay-content">
-                <div id="topNav" class="fixed" style="position:sticky;color:white; background-color: black;top: 0;max-width:inherit;transition: 0.5s;">
+                <div id="topNav" class="navHeader" class="fixed" style="position:sticky;color:white; background-color: black;top: 0;max-width:inherit;transition: 0.5s;">
 
                     <div class="row">
-                        <div class="col" style="margin-left:10px;">
+                        <div class="col" style="text-transform: uppercase;">
                             Compétitions
                         </div>
-                        <div class="col">
+                        <!-- <div class="col">
                             <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
-                        </div>
+                        </div> -->
 
                     </div>
                 </div>
@@ -93,11 +90,10 @@
             </div>
         </div>
 
+        <div id="myNavBg" class="nav-background">
 
+        </div>
 
     </mat-toolbar-row>
-
-
-
 
 </mat-toolbar>

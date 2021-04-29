@@ -21,16 +21,19 @@ export class CountryFlagUrlService {
                 return this._getFlag(ECountryCompetition.L1_UBER_EATS.countryName);
 
             case ECountryCompetition.L2_BKT.competition:
-                return this._getFlag(ECountryCompetition.L2_BKT.competition);
+                return this._getFlag(ECountryCompetition.L2_BKT.countryName);
 
             case ECountryCompetition.PREMIER_LEAGUE.competition:
                 return this._getFlag(ECountryCompetition.PREMIER_LEAGUE.countryName);
 
             case ECountryCompetition.SERIA_A.competition:
-                return this._getFlag(ECountryCompetition.SERIA_A.competition);
+                return this._getFlag(ECountryCompetition.SERIA_A.countryName);
 
             case ECountryCompetition.LIGA_NOS.competition:
-                return this._getFlag(ECountryCompetition.LIGA_NOS.competition);
+                return this._getFlag(ECountryCompetition.LIGA_NOS.countryName);
+
+            case ECountryCompetition.BUNDESLIGA_1.competition:
+                return this._getFlag(ECountryCompetition.BUNDESLIGA_1.countryName);
 
             default:
                 return '';

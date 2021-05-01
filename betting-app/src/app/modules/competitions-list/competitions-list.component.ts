@@ -51,7 +51,6 @@ export class CompetitionsListComponent {
         this.sportService.getAll().subscribe(
             result => {
                 result.forEach(sport => {
-                    console.log('sport.id === undefined', sport.id === undefined);
                     if (sport.hasBet && sport.id !== undefined) {
                         // get all sport competitions
                         this.competitionService.getAll(sport.id).subscribe(
@@ -97,9 +96,6 @@ export class CompetitionsListComponent {
             }
         }
 
-        this.selection.length === 0 ? this.ngxLoader.stop() : this.ngxLoader.start();
-
-        this.handleLoader();
     }
 
     handleLoader() {

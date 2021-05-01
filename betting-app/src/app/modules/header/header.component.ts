@@ -1,8 +1,10 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 import { User } from 'src/app/shared/models/user';
 import { AuthenticationService } from 'src/app/shared/services/api/authentication.service';
 import { HeaderService } from 'src/app/shared/services/ui/header.service';
+import { SelectedBetsService } from 'src/app/shared/services/ui/selected-bets.service';
 
 @Component({
     selector: 'app-header',
@@ -11,13 +13,15 @@ import { HeaderService } from 'src/app/shared/services/ui/header.service';
 })
 export class HeaderComponent implements OnInit {
 
-    opened = false;
+    opened = new BehaviorSubject(false);
     isOpenSearch = false;
     currentUser: User = null;
     displayHeader = false;
     navBtnClicked = false;
+    outcomesNumber = 0;
     constructor(private authenticationService: AuthenticationService,
                 private headerService: HeaderService,
+                private selectedBetOutcomesService: SelectedBetsService,
                 private router: Router) {
 
         this.headerService.displayMenuIcon.subscribe(
@@ -30,29 +34,50 @@ export class HeaderComponent implements OnInit {
             }
         );
 
+        this._getSelectedOutcomesNumber();
+    }
+
+    private _getSelectedOutcomesNumber() {
+
+        this.selectedBetOutcomesService.selectedOutcomes$.subscribe(
+            selectedOutcomes => {
+                this.outcomesNumber = selectedOutcomes.length;
+            }
+        );
     }
 
     @HostListener('document:click', ['$event'])
     clickout(event) {
+        // if we click outside myNav
         if (!document.getElementById('myNav').contains(event.target)) {
-            // if side nav is opened
-            if (this.opened) {
+
+            // if we clicked btnNav
+            if (document.getElementById('btnNav').contains(event.target)) {
+
+                document.getElementById('myNav').style.width = '60%';
+                document.getElementById('topNav').style.display = 'block';
+
+                document.getElementById('myNavBg').style.width = '100%';
+                this.opened.next(true);
+                return;
+            }
+
+            // if we clicked outside && nav is opened
+            if (this.opened.getValue()) {
                 this.closeNav();
-                this.opened = !this.opened;
+                this.opened.next(!this.opened);
             }
         }
     }
 
     openNav(): void {
+
         document.getElementById('myNav').style.width = '60%';
         document.getElementById('topNav').style.display = 'block';
 
-
         document.getElementById('myNavBg').style.width = '100%';
-        // document.getElementById('topNav').style.display = 'block';
-        setTimeout(() => {
-            this.opened = true;
-        }, 100);
+
+        this.opened.next(true);
     }
 
     closeNav(): void {

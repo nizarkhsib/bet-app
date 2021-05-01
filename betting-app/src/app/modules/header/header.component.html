@@ -25,12 +25,12 @@
         </div>
 
         <span class="competition-mobile-menu">
-            <button mat-mini-fab *ngIf="currentUser" (click)="openNav()" color="basic" style="margin-right: 10px;">
+            <button mat-mini-fab *ngIf="currentUser" id="btnNav" (click)="openNav()" color="basic" style="margin-right: 10px;">
                 <i class="fa fa-trophy fa-lg" aria-hidden="true"></i>
             </button>
         </span>
 
-        <button color="basic" style="margin-right: 10px; background-color: white;" matBadge="8" matBadgePosition="before" matBadgeColor="accent">
+        <button color="basic" style="margin-right: 10px; background-color: white;" [routerLink]="[ '/my-bets']" [matBadge]="outcomesNumber" matBadgePosition="before" matBadgeColor="accent">
             <i class="fa fa-qrcode fa-lg"></i>
         </button>
 

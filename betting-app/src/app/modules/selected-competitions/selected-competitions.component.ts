@@ -100,8 +100,8 @@ export class SelectedCompetitionsComponent implements OnInit, OnDestroy {
                         },
                         () => {
                             this.loading = false;
-                            this.ngxLoader.stop();
                             this.parisGroupedByDate = this.removeDuplicateObjects(this.parisGroupedByDate);
+                            this.ngxLoader.stop();
                         });
                 }
             );

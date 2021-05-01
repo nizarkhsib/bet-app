@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     selection: Competition[] = [];
     // @TODO add fetch by competitions
     displayedSelected = false;
+    windowInnerWidth;
 
     constructor(public fb: FormBuilder,
                 public dialog: MatDialog,
@@ -42,6 +43,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
                 private headerService: HeaderService,
                 private ngxLoader: NgxUiLoaderService,
                 private router: Router) {
+
+        this.windowInnerWidth = window.innerWidth;
 
         this.selectionService.competitionSubject.subscribe(
             (val) => {

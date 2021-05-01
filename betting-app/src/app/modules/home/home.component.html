@@ -1,6 +1,6 @@
 <div class="center-header" *ngIf="competitionsArray">
 
-    <div style="overflow-y: hidden;">
+    <div style="overflow-y: hidden;" *ngIf="windowInnerWidth > 800">
         <div class="side-nav ">
             <mat-accordion>
                 <app-competitions-list></app-competitions-list>

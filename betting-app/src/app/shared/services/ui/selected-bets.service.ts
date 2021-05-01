@@ -12,7 +12,7 @@ export class SelectedBetsService {
 
     removeBetFromList(bet, outcome) {
         const actualList = this.selectedOutcomes$.getValue();
-        const find = actualList.find(e => e.bet === bet && e.selectedOutcome === outcome);
+        const find = actualList.find(s => s.bet.eventId === bet.eventId && s.selectedOutcome.pos === outcome.pos);
 
         if (find !== undefined) {
             actualList.splice(actualList.indexOf(find), 1);

@@ -23,9 +23,7 @@ export class TeamBoxComponent implements OnInit {
     }
 
     setSelectedOutcomes() {
-        this.selectedBetsService.selectedOutcomes$.pipe(
-            take(1)
-        ).subscribe(
+        this.selectedBetsService.selectedOutcomes$.subscribe(
             selected => {
                 this.selectedOutcomes = selected;
                 this.loaded = true;
@@ -49,13 +47,14 @@ export class TeamBoxComponent implements OnInit {
     }
 
     isClicked(fulLbet, outcome): boolean {
-        window.setTimeout(() => {
-            // do something
-        }, 500);
+        // window.setTimeout(() => {
+        //     // do something
+        // }, 500);
         return this.selectedOutcomes.find(s => s.bet.eventId === fulLbet.eventId && s.selectedOutcome.pos === outcome.pos) !== undefined;
     }
 
     outCome1Clicked(bet, outcome): void {
+        console.log('outCome1Clicked');
         this.setOutCome(bet, outcome);
     }
 
@@ -69,8 +68,8 @@ export class TeamBoxComponent implements OnInit {
 
     setOutCome(fulLbet, outcome) {
 
-        const find = this.selectedOutcomes.find(s => s.bet === fulLbet && s.selectedOutcome === outcome);
-
+        const find = this.selectedOutcomes.find(s => s.bet.eventId === fulLbet.eventId && s.selectedOutcome.pos === outcome.pos);
+        console.log('find', find);
         if (find !== undefined) {
             // delete bet from service
             this.selectedBetsService.removeBetFromList(fulLbet, outcome);

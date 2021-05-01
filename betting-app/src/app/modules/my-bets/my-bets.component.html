@@ -1,0 +1,70 @@
+<div class="container" style="margin-top:100px; width:400px;">
+    <div class="card ">
+        <div class="card-header text-center">
+            <h3 *ngIf="selectedBetOutcomes.length > 0">
+                ({{selectedBetOutcomes.length}}) Séléctions
+            </h3>
+            <h3 *ngIf="selectedBetOutcomes.length === 0">
+                Séléction
+            </h3>
+        </div>
+        <div class="card-body">
+            <div class="text-center">
+                <h3 *ngIf="selectedBetOutcomes.length === 0">
+                    <span>Votre panier est vide</span> <br>
+                    <a [routerLink]="[ '/' ]">Commencer à parier</a>
+                </h3>
+            </div>
+
+            <div *ngFor="let betOutcome of selectedBetOutcomes">
+                <!-- style="background-color: whitesmoke;" -->
+                <div [class.alert-danger]="isDouble(betOutcome)" class="card container" style="margin-bottom: 4px;">
+                    <div style="padding:10px;">
+                        <div class="row">
+                            <span class="text-left">
+                                {{betOutcome.bet.label}}
+                            </span>
+                            <div style="margin-left: auto;">
+                                <span>
+                                    {{betOutcome.selectedOutcome.cote}}
+                                </span>
+                                <button (click)="delete(betOutcome)" mat-icon-button style="color: black">
+                                    <mat-icon>delete</mat-icon>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <span>
+                                Choix : {{betOutcome.selectedOutcome.label}}
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div *ngIf="selectedBetOutcomes.length > 0">
+                <form [formGroup]="form">
+                    <div class="card container" style="margin-top: 10px;">
+                        <div class="row">
+                            <div class="col-4">
+                                <mat-form-field class="full-width">
+                                    <mat-label>Mise : </mat-label>
+                                    <input matInput formControlName="amount" placeholder="10">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-8">
+                                <label><b>Cote :</b> {{coteTotale}}</label><br>
+                                <label><b>Gain possible : </b>{{gains}} €</label>
+                            </div>
+
+                        </div>
+                    </div>
+                    <button class="full-width" [disabled]="hasDouble" mat-raised-button color="primary">Valider</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

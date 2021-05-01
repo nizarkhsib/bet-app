@@ -7,6 +7,7 @@ import { PanierComponent } from './modules/panier/panier.component';
 import { RegisterComponent } from './modules/register/register.component';
 import { AuthGuard } from './shared/helpers/auth.guard';
 import { LoginComponent } from './modules/login/login.component';
+import { MyBetsComponent } from './modules/my-bets/my-bets.component';
 
 const routes: Routes = [
     {
@@ -22,6 +23,11 @@ const routes: Routes = [
     {
         path: 'matches/:competitionId', // child route path
         component: MatchesComponent, // child route component that the router renders
+        canActivate: [AuthGuard]
+    },
+    {
+        path: 'my-bets',
+        component: MyBetsComponent,
         canActivate: [AuthGuard]
     },
     {

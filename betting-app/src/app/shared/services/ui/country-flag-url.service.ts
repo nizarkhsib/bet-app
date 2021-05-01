@@ -35,6 +35,9 @@ export class CountryFlagUrlService {
             case ECountryCompetition.BUNDESLIGA_1.competition:
                 return this._getFlag(ECountryCompetition.BUNDESLIGA_1.countryName);
 
+            case ECountryCompetition.LIGA_PRIMERA.competition:
+                return this._getFlag(ECountryCompetition.LIGA_PRIMERA.countryName);
+
             default:
                 return '';
         }

@@ -48,6 +48,9 @@ export class HeaderComponent implements OnInit {
 
     @HostListener('document:click', ['$event'])
     clickout(event) {
+        if (window.innerWidth > 800) {
+            return;
+        }
         // if we click outside myNav
         if (!document.getElementById('myNav').contains(event.target)) {
 

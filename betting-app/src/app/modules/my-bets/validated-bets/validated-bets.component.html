@@ -1,0 +1,24 @@
+<mat-accordion>
+    <mat-expansion-panel *ngFor="let bulletin of bulletins">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                <h5 class="card-title">
+                    {{bulletin.selectedBetOutcomes.length}} Paris combinés
+                </h5>
+            </mat-panel-title>
+            <mat-panel-description>
+                <b> {{bulletin.gains}} €</b>
+
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <div class="container">
+            <div *ngFor="let sb of bulletin.selectedBetOutcomes">
+                <div class="row">
+                    <h6>{{sb.bet.label}} : {{sb.selectedOutcome.label}} : {{sb.selectedOutcome.cote}}</h6><br>
+
+                </div>
+            </div>
+        </div>
+
+    </mat-expansion-panel>
+</mat-accordion>

@@ -1,5 +1,18 @@
 exports.allAccess = (req, res) => {
-  res.status(200).send("Public Content.");
+  res.status(200).send(
+    [
+      {
+        "id": 1,
+        "firstname": "nizar",
+        "lastname": "khsib"
+      },
+      {
+        "id": 2,
+        "firstname": "Ryadh",
+        "lastname": "Khsib"
+      }
+    ]
+  );
 };
 
 exports.userBoard = (req, res) => {

@@ -1,7 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { delay, take } from 'rxjs/operators';
 import { SelectedBetsService } from 'src/app/shared/services/ui/selected-bets.service';
-import { countries } from 'country-flags-svg';
 import { CountryFlagUrlService } from 'src/app/shared/services/ui/country-flag-url.service';
 
 @Component({
@@ -47,14 +45,11 @@ export class TeamBoxComponent implements OnInit {
     }
 
     isClicked(fulLbet, outcome): boolean {
-        // window.setTimeout(() => {
-        //     // do something
-        // }, 500);
+
         return this.selectedOutcomes.find(s => s.bet.eventId === fulLbet.eventId && s.selectedOutcome.pos === outcome.pos) !== undefined;
     }
 
     outCome1Clicked(bet, outcome): void {
-        console.log('outCome1Clicked');
         this.setOutCome(bet, outcome);
     }
 
@@ -69,7 +64,6 @@ export class TeamBoxComponent implements OnInit {
     setOutCome(fulLbet, outcome) {
 
         const find = this.selectedOutcomes.find(s => s.bet.eventId === fulLbet.eventId && s.selectedOutcome.pos === outcome.pos);
-        console.log('find', find);
         if (find !== undefined) {
             // delete bet from service
             this.selectedBetsService.removeBetFromList(fulLbet, outcome);

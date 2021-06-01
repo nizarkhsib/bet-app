@@ -35,6 +35,8 @@ import localeFr from '@angular/common/locales/fr';
 import { SelectedBetsService } from './shared/services/ui/selected-bets.service';
 import { LoginComponent } from './modules/login/login.component';
 import { MyBetsComponent } from './modules/my-bets/my-bets.component';
+import { CartComponent } from './modules/my-bets/cart/cart.component';
+import { ValidatedBetsComponent } from './modules/my-bets/validated-bets/validated-bets.component';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -63,7 +65,9 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
         HeaderComponent,
         CompetitionsListComponent,
         SearchBoxComponent,
-        MyBetsComponent
+        MyBetsComponent,
+        CartComponent,
+        ValidatedBetsComponent
     ],
     imports: [
         BrowserModule,

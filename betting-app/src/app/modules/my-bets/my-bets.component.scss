@@ -19,3 +19,26 @@ hr {
 .mat-raised-button {
     border-radius: 0 !important;
 }
+
+
+.tab-container {
+    border-bottom: 2px solid #ffffff;
+    margin-top: 100px;
+    width: 100%;
+    min-height: 500px;
+    border: solid 2px;
+    position: relative;
+}
+
+.bets-container {
+    width: 100%;
+    min-height: 500px;
+    position: relative;
+    padding-bottom: 30px;
+
+    .btn-validate {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+    }
+}

@@ -1,76 +1,20 @@
 <div class="container">
+    <div class="tab-container">
+        <mat-tab-group [selectedIndex]="selected" (selectedIndexChange)="indexChange($event)">
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <label><b>MON PANIER</b></label>
+                </ng-template>
 
-    <div class="" style="border-bottom: 2px solid #ffffff;margin-top:100px; width:100%;">
-        <div class="">
-            <div class="text-center" style="background-color: steelblue;color:white;">
-                <label *ngIf="selectedBetOutcomes.length > 0">
-                    {{selectedBetOutcomes.length}} Sélections
-                </label>
-                <label *ngIf="selectedBetOutcomes.length === 0">
-                    Sélection
-                </label>
-            </div>
-            <div class="">
-                <div class="text-center">
-                    <h3 *ngIf="selectedBetOutcomes.length === 0">
-                        <span>Votre panier est vide</span> <br>
-                        <a [routerLink]="[ '/' ]">Commencez à parier</a>
-                    </h3>
-                </div>
+                <app-cart></app-cart>
+            </mat-tab>
+            <mat-tab>
+                <ng-template mat-tab-label>
+                    <label><b>MES PARIS</b></label>
+                </ng-template>
 
-                <div *ngFor="let betOutcome of selectedBetOutcomes">
-                    <!-- style="background-color: whitesmoke;" -->
-                    <div [class.alert-danger]="isDouble(betOutcome)" class="" style="border-bottom: 2px solid lightgray;">
-                        <div style="margin:20px;">
-                            <div class="row">
-                                <label class="text-left">
-                                    <b>
-                                        {{betOutcome.bet.label}}
-                                    </b>
-                                </label>
-                                <div style="margin-left: auto;">
-                                    <label>
-                                        {{betOutcome.selectedOutcome.cote}}
-                                    </label>
-                                    <button (click)="delete(betOutcome)" mat-icon-button style="color: cadetblue;">
-                                        <mat-icon>delete</mat-icon>
-                                    </button>
-                                </div>
-                            </div>
+                <app-validated-bets *ngIf="selected === 1"></app-validated-bets>
+            </mat-tab>
+        </mat-tab-group>
 
-                            <div class="row">
-                                <label>
-                                    Choix : {{betOutcome.selectedOutcome.label}}
-                                </label>
-                            </div>
-                        </div>
-                        <!-- <hr style="border: 1px solid steelblue"> -->
-
-                    </div>
-                </div>
-
-                <div *ngIf="selectedBetOutcomes.length > 0">
-                    <form [formGroup]="form">
-                        <div class="container" style="border-bottom: 2px solid #ffffff; margin-top: 10px;">
-                            <div class="">
-                                <div class="">
-                                    <mat-form-field class="full-width">
-                                        <mat-label>Mise : </mat-label>
-                                        <input matInput formControlName="amount" placeholder="10">
-                                    </mat-form-field>
-                                </div>
-                                <div class="">
-                                    <label><b>Cote :</b> {{coteTotale}}</label><br>
-                                    <label><b>Gain possible : </b>{{gains}} €</label>
-                                </div>
-
-                            </div>
-                        </div>
-                        <button class="full-width" [disabled]="hasDouble" mat-raised-button style="background-color: steelblue;">Valider</button>
-                    </form>
-                </div>
-
-            </div>
-        </div>
     </div>
-</div>

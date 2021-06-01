@@ -1,20 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { SelectedBetsService } from 'src/app/shared/services/ui/selected-bets.service';
 
 @Component({
-    selector: 'app-my-bets',
-    templateUrl: './my-bets.component.html',
-    styleUrls: ['./my-bets.component.scss']
+    selector: 'app-cart',
+    templateUrl: './cart.component.html',
+    styleUrls: ['./cart.component.scss']
 })
-export class MyBetsComponent implements OnInit {
+export class CartComponent implements OnInit {
     form: FormGroup;
     selectedBetOutcomes;
     coteTotale = 1;
     gains = 1;
     hasDouble = false;
-    selected = 0;
 
     constructor(private selectedBetsService: SelectedBetsService, private fb: FormBuilder) {
 
@@ -44,6 +42,7 @@ export class MyBetsComponent implements OnInit {
             this.gains = Math.floor(this.coteTotale * this.getAmount() * 100) / 100;
         }
     }
+
     getAmount() {
         return this.form.controls.amount.value;
     }
@@ -71,6 +70,10 @@ export class MyBetsComponent implements OnInit {
 
     validate() {
 
+        // gains
+        // cote totale
+        // mise
+        // selected
         const newBulletin = {
             gains: this.gains,
             coteTotale: this.coteTotale,
@@ -87,10 +90,6 @@ export class MyBetsComponent implements OnInit {
         }
         this.selectedBetsService.selectedOutcomes$.next([]);
         this.selectedBetOutcomes = [];
-    }
 
-    indexChange(event) {
-        this.selected = event;
     }
-
 }

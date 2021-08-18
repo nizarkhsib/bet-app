@@ -1,9 +1,7 @@
-<ng-container>
-    <div class="bloc-offre-1x2" style="margin-top: 50px;">
-        <ngx-ui-loader fgsSize="75"></ngx-ui-loader>
+<div class="bloc-offre-1x2">
+    <ngx-ui-loader fgsSize="75"></ngx-ui-loader>
+</div>
 
-        <div>
-            <app-matches *ngIf="parisGroupedByDate.length > 0" [listeParis]="parisGroupedByDate"></app-matches>
-        </div>
-    </div>
-</ng-container>
+<div style="display: grid;overflow-y: scroll;">
+    <app-matches *ngIf="parisGroupedByDate.length > 0" [listeParis]="parisGroupedByDate"></app-matches>
+</div>

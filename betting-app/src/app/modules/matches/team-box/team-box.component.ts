@@ -16,7 +16,7 @@ export class TeamBoxComponent implements OnInit {
     loaded = false;
 
     constructor(private selectedBetsService: SelectedBetsService,
-                private countryFlagUrlService: CountryFlagUrlService) {
+        private countryFlagUrlService: CountryFlagUrlService) {
         this.setSelectedOutcomes();
     }
 

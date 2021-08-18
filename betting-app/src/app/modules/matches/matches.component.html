@@ -1,22 +1,11 @@
-<div class="center">
+<div *ngFor="let parisParDate of listeParis">
 
-    <ng-container>
-        <div class="date-header fixed" style=" font-size: 15px; color:black;">
-            <div style="width:300px">
-
-                <mat-label style="width:100px;" style="margin-left:10px; margin-right: 10px;">Date : </mat-label>
-                <mat-select style="width:200px;border: 0px solid;border-radius: 7px; background-color: skyblue;" *ngIf="listeParis.length > 0" (selectionChange)="selectionChange($event)" disableOptionCentering panelClass="myPanelClass" placeholder="{{listeParis[0].date | date }}" [selected]="selectedParis">
-                    <mat-option *ngFor="let parisParDate of listeParis;" [value]="parisParDate"><b>{{parisParDate.date | date }}</b></mat-option>
-                </mat-select>
-            </div>
-        </div>
-    </ng-container>
-
-    <div class="flex-container-bets">
-
-        <div *ngFor="let paris of selectedParis.liste">
-            <app-team-box [paris]="paris"></app-team-box>
-        </div>
-
+    <div class="date-paris">
+        {{parisParDate.date | date }}
     </div>
+
+    <div *ngFor="let paris of parisParDate.liste">
+        <app-team-box [paris]="paris"></app-team-box>
+    </div>
+
 </div>

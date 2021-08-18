@@ -21,7 +21,7 @@ export class MatchesComponent implements OnInit {
     public sectionsIndex: any = [];
 
     constructor(private el: ElementRef,
-                private headerService: HeaderService) {
+        private headerService: HeaderService) {
     }
 
     ngOnInit(): void {

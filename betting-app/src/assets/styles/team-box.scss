@@ -1,0 +1,84 @@
+.teams-item {
+
+    padding: 5px;
+    border-radius: 0.3em;
+    border-width: 1px;
+    font-size: 12px;
+    text-align: left;
+    font-family: Roboto, Arial, sans-serif;
+    transition: 0.5s;
+
+    .flag {
+        width: 20px;
+        height: 20px;
+        margin-top: 6px;
+        margin-right: 10px;
+    }
+
+    .add-btn {
+        float: right;
+        background-color: white;
+        color: black;
+        text-align: center;
+        margin-top: -2px;
+    }
+
+    .flex-1x2-container {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        border: 0px solid silver;
+        -ms-box-orient: horizontal;
+        display: -webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+        display: -webkit-flex;
+        display: flex;
+        font-size: 2em;
+
+        .choice-1n2-container {
+            background: black;
+            padding: 5px;
+            width: 100%;
+            margin: 5px;
+            line-height: 20px;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            text-align: left;
+            border: 1px solid silver;
+            display: grid;
+            grid-auto-flow: column;
+
+            .box-1x2 {
+                background-color: #89BA17;
+                width: 20px;
+                text-align: center;
+                border-radius: 0.2em;
+            }
+
+            .box-1x2-cote {
+                width: 20px;
+                text-align: center;
+                border-radius: 0.2em;
+            }
+
+        }
+
+        .choice-1n2-container {
+            // background-color: dodgerblue;
+            // color: black;
+            cursor: grab;
+        }
+
+        .choice-1n2-clicked {
+            background-color: dodgerblue;
+            color: black;
+        }
+
+
+    }
+
+
+}

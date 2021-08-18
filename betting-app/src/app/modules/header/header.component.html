@@ -9,7 +9,8 @@
 
         <span class="spacer"></span>
 
-        <button fxFlex fxLayoutAlign="flex-end center" *ngIf="!currentUser" mat-raised-button [routerLink]="['/login']" color="basic" aria-label="Example icon button with a menu icon">
+        <button fxFlex fxLayoutAlign="flex-end center" *ngIf="!currentUser" mat-raised-button [routerLink]="['/login']"
+            color="basic" aria-label="Example icon button with a menu icon">
             Login
         </button>
 
@@ -25,12 +26,14 @@
         </div>
 
         <span class="competition-mobile-menu">
-            <button mat-mini-fab *ngIf="currentUser" id="btnNav" (click)="openNav()" color="basic" style="margin-right: 10px;">
+            <button mat-mini-fab *ngIf="currentUser" id="btnNav" (click)="openNav()" color="basic"
+                style="margin-right: 10px;">
                 <i class="fa fa-trophy fa-lg" aria-hidden="true"></i>
             </button>
         </span>
 
-        <button color="basic" style="margin-right: 10px; background-color: white;" [routerLink]="[ '/my-bets']" [matBadge]="outcomesNumber" matBadgePosition="before" matBadgeColor="accent">
+        <button color="basic" style="margin-right: 10px; background-color: white;" [routerLink]="[ '/my-bets']"
+            [matBadge]="outcomesNumber" matBadgePosition="before" matBadgeColor="accent">
             <i class="fa fa-qrcode fa-lg"></i>
         </button>
 
@@ -73,7 +76,8 @@
         <div id="myNav" class="overlay">
 
             <div class="overlay-content">
-                <div id="topNav" class="navHeader" class="fixed" style="position:sticky;color:white; background-color: black;top: 0;max-width:inherit;transition: 0.5s;">
+                <div id="topNav" class="navHeader" class="fixed"
+                    style="position:sticky;color:white; background-color: black;top: 0;max-width:inherit;transition: 0.5s;">
 
                     <div class="row">
                         <div class="col" style="text-transform: uppercase;">

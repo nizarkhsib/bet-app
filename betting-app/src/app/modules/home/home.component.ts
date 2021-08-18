@@ -1,14 +1,11 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { FormBuilder } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Competition } from 'src/app/models/competition.model';
 import { Router } from '@angular/router';
 import { CompetitionsService } from 'src/app/shared/services/api/competitions.service';
 import { MatchesService } from 'src/app/shared/services/api/matches.services';
 import { SportService } from 'src/app/shared/services/api/sport.service';
-import { HeaderService } from 'src/app/shared/services/ui/header.service';
-import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { SelectedCompetitionsService } from 'src/app/shared/services/ui/selected-competitions.service';
 
 @Component({
@@ -32,17 +29,14 @@ export class HomeComponent implements OnInit, AfterViewInit {
     windowInnerWidth;
 
     constructor(public fb: FormBuilder,
-                public dialog: MatDialog,
-                private snackBar: MatSnackBar,
-                public chartDialog: MatDialog,
-                public deleteConfirmDialog: MatDialog,
-                private competitionService: CompetitionsService,
-                private matchesService: MatchesService,
-                private sportService: SportService,
-                private selectionService: SelectedCompetitionsService,
-                private headerService: HeaderService,
-                private ngxLoader: NgxUiLoaderService,
-                private router: Router) {
+        public dialog: MatDialog,
+        public chartDialog: MatDialog,
+        public deleteConfirmDialog: MatDialog,
+        private competitionService: CompetitionsService,
+        private matchesService: MatchesService,
+        private sportService: SportService,
+        private selectionService: SelectedCompetitionsService,
+        private router: Router) {
 
         this.windowInnerWidth = window.innerWidth;
 

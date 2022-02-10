@@ -20,6 +20,7 @@ export class SearchBoxComponent implements OnInit {
         document.getElementById('myOverlay').style.display = 'block';
     }
 
+
     closeSearch(): void {
         document.getElementById('myOverlay').style.display = 'none';
         this.closed.emit(true);

@@ -64,7 +64,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
         TeamBoxComponent,
         HeaderComponent,
         CompetitionsListComponent,
-        SearchBoxComponent,
+        // SearchBoxComponent,
         MyBetsComponent,
         CartComponent,
         ValidatedBetsComponent

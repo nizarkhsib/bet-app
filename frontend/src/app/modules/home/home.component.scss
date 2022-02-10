@@ -1,128 +1,5 @@
-.center-header {
-
-    justify-content: center;
-    overflow: hidden;
-
-    .flex-container {
-        padding: 0;
-        list-style: none;
-        -ms-box-orient: horizontal;
-        background-color: black;
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -moz-flex;
-        display: -webkit-flex;
-        align-items: center;
-        grid-template-columns: repeat(auto-fill, 400px);
-        justify-content: center;
-        width: 100%;
-        margin-top: 30px;
-        transition: 0.5s;
-
-        .flex-item {
-            background: #1976d2;
-            padding: 5px;
-            width: 180px;
-            height: 50px;
-            margin: 10px;
-            border-style: solid;
-            border-radius: 1em;
-            border-width: 1px;
-            line-height: 50px;
-            color: whitesmoke;
-            font-weight: bold;
-            font-size: 3em;
-            text-align: center;
-            margin: 20px;
-        }
-
-        .flex-competition-select {
-            background: white;
-            border-color: white;
-            border-style: solid;
-            border-radius: 0.2em;
-            border-width: 1px;
-            font-size: 15px;
-            text-align: center;
-            // margin: 8px;
-            margin: 2px;
-            width: 300px;
-            height: 56px;
-        }
-
-        .flex-item:hover {
-            background-color: whitesmoke;
-            color: black;
-            cursor: grab;
-        }
-
-    }
-}
-
-
-.wrap {
-    -webkit-flex-wrap: wrap;
-    flex-wrap: wrap;
-    flex-flow: row wrap;
-}
-
-.spinner {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 200px;
-    z-index: 10000;
-}
-
-.xxx {
-    color: rgb(32, 32, 32);
-    text-align: left;
-    font-size: 20px;
-}
-
-.bloc-offre-1x2-main {
-    margin-left: 340px;
-    width: 100%;
-
-    /* CSS that should be displayed if width is equal to or less than 800px goes here */
-    @media (max-width: 800px) {
-        margin-left: 0px;
-    }
-}
-
-
-.bloc-offre-1x2 {
-    // margin-top: 55px;
-    margin-left: 360px;
-    width: 100%;
-
-    /* CSS that should be displayed if width is equal to or less than 800px goes here */
-    @media (max-width: 800px) {
-        margin-left: 0px;
-    }
-}
-
-.bloc-offre-1x2-main {
-
-    width: 450px;
-
-    @media (max-width: 685px) {
-        margin-left: 0%;
-    }
-}
-
-.side-nav {
-    position: fixed;
-    width: 360px;
-    height: 100vh;
-    left: 0;
-    right: 0;
-    overflow-y: scroll;
-    top: 60px;
-    padding: 20px;
-    background-color: black;
+.sidebar {
+    grid-area: sidebar;
 
     /* CSS that should be displayed if width is equal to or less than 800px goes here */
     @media (max-width: 800px) {
@@ -130,13 +7,77 @@
     }
 }
 
-h2 {
-    display: flex;
-    justify-content: center;
-    color: white;
-    margin-right: 20%;
+.sidebar2 {
+    grid-area: sidebar2;
+}
 
-    @media (max-width: 800px) {
-        margin-right: 0%;
+.content {
+    min-height: 100vh;
+    grid-area: content;
+}
+
+.header {
+    grid-area: header;
+}
+
+.footer {
+    grid-area: footer;
+}
+
+.wrapper {
+    position: sticky;
+    overflow-y: scroll;
+    background-color: #fff;
+    color: #444;
+}
+
+.wrapper {
+    display: grid;
+    grid-gap: 1em;
+    grid-template-areas:
+        "header"
+        "sidebar"
+        "content"
+        "sidebar2"
+        "footer"
+}
+
+@media only screen and (min-width: 500px) {
+    .wrapper {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "header   header"
+            "content  content"
+            "footer   footer";
     }
+}
+
+@media only screen and (min-width: 600px) {
+    .wrapper {
+        grid-gap: 20px;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-areas:
+            "header  header  header header"
+            "sidebar content content sidebar2"
+            "footer  footer  footer footer";
+        max-width: 100vw;
+    }
+}
+
+.box {
+    background-color: white;
+    // color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 150%;
+}
+
+.header,
+.footer {
+    background-color: #999;
+}
+
+.sidebar2 {
+    background-color: #ccc;
+    color: #444;
 }

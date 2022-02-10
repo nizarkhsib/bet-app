@@ -1,21 +1,21 @@
-<div class="center-header" *ngIf="competitionsArray">
-
-    <div style="overflow-y: hidden;" *ngIf="windowInnerWidth > 800">
-        <div class="side-nav ">
-            <mat-accordion>
-                <app-competitions-list></app-competitions-list>
-            </mat-accordion>
-        </div>
+<div class="wrapper">
+    <div class="box header">Header</div>
+    <div class="box sidebar">
+        <mat-accordion>
+            <app-competitions-list></app-competitions-list>
+        </mat-accordion>
     </div>
 
-    <div class="flex-container wrap">
-        <div class="flex-container wrap" style="background-color: black;" *ngIf=" !loadingTop && selectedCompetitions.length === 0">
-            <br>
-            <div *ngIf="selection.length == 0" class="bloc-offre-1x2-main">
-                <div *ngFor="let paris of topBets">
-                    <app-team-box [paris]="paris"></app-team-box>
-                </div>
+    <div class="box content">
+
+        <div *ngIf="selectedCompetitions.length === 0">
+            <div *ngFor="let paris of topBets">
+                <app-team-box [paris]="paris"></app-team-box>
             </div>
         </div>
+
         <router-outlet></router-outlet>
+
     </div>
+    <div class="box footer">Footer</div>
+</div>
